@@ -1,0 +1,95 @@
+﻿<Window x:Class="CinemaManagement.Views.Staff.MainStaffWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:CinemaManagement.ViewModel.StaffViewModel" mc:Ignorable="d" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" DataContext="{StaticResource MainStaffVM}" Name="Main_Staff" Height="Auto" Width="Auto" >
+
+    <Window.Resources>
+        <local:IsAdminConverter x:Key="AdminConverter" />
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
+
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+
+    <Grid>
+        <DockPanel>
+
+            <Border BorderThickness="0,0,1,0" BorderBrush="#c4c4c4">
+                <StackPanel DockPanel.Dock="Left" Margin="4,16">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Height="40">
+                        <Image Source="/Resources/Icon/iconApp.ico" Width="40" Margin="10,-5,5,0" />
+                        <TextBlock TextWrapping="Wrap" materialDesign:TextBlockAssist.AutoToolTip="True" VerticalAlignment="Bottom" TextAlignment="Center" Text="Squadin Cinema" FontFamily="Helvetica" FontWeight="Bold" Foreground="#e3e9fa" FontSize="16" Width="70" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="0,0,0,224">
+                        <Border CornerRadius="5">
+                            <StackPanel Tag="{Binding ElementName=btnShowing}" Orientation="Horizontal" Height="60" Width="140">
+                                <materialDesign:PackIcon Kind="Movie" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
+                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" GroupName="mainOptions" Content="Phim Đang chiếu" FontWeight="Bold" x:Name="btnShowing" Width="auto" Command="{Binding LoadShowtimePageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                            </StackPanel>
+                        </Border>
+                        <Border CornerRadius="5">
+                            <StackPanel Tag="{Binding ElementName=btnFood}" Orientation="Horizontal" Height="60" Width="140">
+                                <materialDesign:PackIcon Kind="Food" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
+                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" Content="Đồ Ăn" FontWeight="Bold" GroupName="mainOptions" x:Name="btnFood" Width="110" Command="{Binding LoadFoodPageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                            </StackPanel>
+                        </Border>
+                        <Border CornerRadius="5">
+                            <StackPanel Tag="{Binding ElementName=btnError}" Orientation="Horizontal" Height="60" Width="140">
+                                <materialDesign:PackIcon Kind="WarningOctagon" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
+                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" Content="Báo cáo sự cố" FontWeight="Bold" GroupName="mainOptions" x:Name="btnError" Width="110" Command="{Binding LoadErrorPageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#c4c4c4">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <materialDesign:PackIcon Kind="AccountCircle"
+                                                             Width="32"
+                                                             Height="32"
+                                                             Background="Transparent"
+                                                             Foreground="Black" VerticalAlignment="Center" />
+                    <TextBlock VerticalAlignment="Bottom"
+                                               x:Name="_StaffName"
+                                               Height="32"
+                                               FontSize="20"
+                                               TextWrapping="Wrap"
+                                               Foreground="Black"
+                                               Margin="0 10 0 5"
+                                               Padding="0 10 0 0" />
+                    <materialDesign:PopupBox DockPanel.Dock="Right"
+                                                             PlacementMode="BottomAndAlignRightEdges"
+                                                             Foreground="Black">
+                        <StackPanel Orientation="Vertical">
+                            <Button Content="Đổi vai trò"
+                                                    Command="{Binding ChangeRoleCM}"
+                                                    CommandParameter="{Binding ElementName=Main_Staff}"
+                                                    Visibility="{Binding IsAdmin,Converter={StaticResource AdminConverter}}" />
+                            <Button Content="Đăng xuất"
+                                                    Command="{Binding SignoutCM}"
+                                                    CommandParameter="{Binding ElementName=Main_Staff}" />
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+            </Border>
+
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Loaded="mainFrame_Loaded">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadShowtimePageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Frame>
+        </DockPanel>
+    </Grid>
+
+</Window>

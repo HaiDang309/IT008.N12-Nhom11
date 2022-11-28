@@ -1,0 +1,226 @@
+﻿<Page x:Class="CinemaManagement.Views.Admin.FoodManagementPage.FoodPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" DataContext="{StaticResource FoodManagementVM}" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" Height="Auto" Width="Auto" x:Name="mainPage" ShowsNavigationUI="False">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="mainPage" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3" />
+
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding MaskNameCM}" CommandParameter="{Binding ElementName=ShadowMask}" />
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <!--#region Thêm đồ ăn-->
+            <Grid Grid.Row="0" VerticalAlignment="Center" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" FontSize="18" Foreground="#DD000000" FontFamily="Arial" AllowDrop="True" BorderThickness="0,0,0,1" Width="256" Height="30" Padding="0" Margin="30,40,0,0" x:Name="SearchBox" VerticalAlignment="Center" TextChanged="TextBox_TextChanged" VerticalContentAlignment="Center" HorizontalContentAlignment="Left">
+                    </TextBox>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="16,0" VerticalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Style>
+                            <ControlTemplate TargetType="Label" x:Key="Add-edit">
+                                <materialDesign:Card UniformCornerRadius="5" Width="128">
+                                    <Border BorderBrush="{StaticResource PrimaryHueDarkBrush}" BorderThickness="1" CornerRadius="5">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#b2ebf2" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Image Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" Height="24" Width="24" HorizontalAlignment="Stretch" Margin="0,4,0,0" />
+                                            <TextBlock Text="{TemplateBinding Content}" Margin="4" FontFamily="Google Sans" Width="100" TextAlignment="Center" HorizontalAlignment="Center" />
+                                        </StackPanel>
+                                    </Border>
+                                </materialDesign:Card>
+                            </ControlTemplate>
+                        </StackPanel.Resources>
+                        <Label Height="64" Tag="/Resources/Images/ImageFood/popcorn.png" Content="Thêm sản phẩm" Template="{StaticResource Add-edit}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding OpenAddFoodCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Label>
+                        <Label Height="64" Tag="/Resources/Images/ImageFood/adding.png" Content="Nhập hàng" Template="{StaticResource Add-edit}" Margin="4,0,0,0" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding OpenImportFoodCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+                <ComboBox FontSize="18" Grid.Column="1" Width="128" Height="32" SelectedIndex="2" x:Name="cboxFilter" Margin="0,25,15,0" SelectionChanged="cboxFilter_SelectionChanged" VerticalContentAlignment="Center" HorizontalAlignment="Center" SelectedItem="{Binding Category}" VerticalAlignment="Center">
+                    <ComboBoxItem Content="Tất cả" />
+                    <ComboBoxItem Content="Đồ ăn" />
+                    <ComboBoxItem Content="Nước uống" />
+                </ComboBox>
+            </Grid>
+            <!--#endregion-->
+
+            <Grid Grid.Row="1" Margin="16">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="56" />
+                </Grid.RowDefinitions>
+                    
+                <materialDesign:Card Grid.Row="0" Margin="8">
+                    <ListBox ItemsSource="{Binding FoodList}" x:Name="listBox" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" VerticalAlignment="Top" materialDesign:ListBoxItemAssist.ShowSelection="False" materialDesign:ListBoxAssist.IsToggle="False" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="IsSelected" Value="True" />
+                                        <Setter Property="Background" Value="#FFD0EAF6" />
+                                        <!---->
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10" />
+                                        <Setter Property="Width" Value="256" />
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="Margin" Value="0" />
+                                    </Style>
+                                </Style.Resources>
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="Margin" Value="5 5 6 5" />
+                                <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection" Value="False" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                    <Grid Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="128" />
+                                            <RowDefinition Height="32" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                                <Border BorderThickness="1" BorderBrush="Black" Margin="5,7,5,10" Width="210" Height="160">
+                                                    <StackPanel>
+                                                        <Image Source="{Binding Image}" Width="100" Height="100" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                                    </StackPanel>
+                                                </Border>
+
+                                                <StackPanel Margin="-5,5,0,0">
+                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="4" Margin="3" Cursor="Hand" Height="35" Width="35">
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#00e5ff" />
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <Image Source="/Resources/Icon/pencil.png" Width="30" Height="30" Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.OpenEditFoodCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </Border>
+                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="4" Margin="3" Cursor="Hand" Height="35" Width="35">
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#ff6255" />
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <materialDesign:PackIcon Kind="GarbageCanEmpty" Width="30" Height="30" Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteFoodCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                        <TextBlock Grid.Row="1" Text="{Binding DisplayName}" FontSize="20" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" />
+
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="50*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                                <TextBlock Text="  SL " FontSize="18" Margin="0 0 0 3" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                                                <TextBlock Text="{Binding Quantity}" FontSize="18" Margin="0 0 0 3" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock Text="{Binding PriceStr}" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 3 3" />
+                                                <Image Source="/Resources/Images/ImageFood/dong.png" Margin=" 0 0 3 3" Height="22" Width="22" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+
+                                </Border>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+                </materialDesign:Card>
+               
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Label Content="Tổng: " FontSize="14" />
+                    <Label Content="{Binding FoodList.Count}" x:Name="result" FontSize="14" />
+                </StackPanel>
+            </Grid>
+            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Height="100" Width="100" IsIndeterminate="{Binding IsLoadding}" Margin="0,-700,0,0" />
+            <Grid Grid.RowSpan="2" Background="Gray" Opacity="0.3" Visibility="Collapsed" x:Name="ShadowMask" />
+        </Grid>
+    </Grid>
+
+</Page>

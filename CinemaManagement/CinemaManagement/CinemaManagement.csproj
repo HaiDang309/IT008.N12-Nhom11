@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4AD4EABD-2B42-48F1-9737-C20CB957BB48}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CinemaManagement</RootNamespace>
+    <AssemblyName>CinemaManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CinemaManagement.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon\iconApp.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.15.2.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.15.2\lib\net452\CloudinaryDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="dotenv.net, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotenv.net.3.1.1\lib\netstandard2.0\dotenv.net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.0.3.2, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.0.3\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.2.1.2, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.2.1\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=1.10.19324.4, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.1.1.0\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.WebEncoders, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.WebEncoders.1.0.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=3.0.8.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.3.0.8\lib\net45\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.TeamFoundation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.WebApi, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Services.Client.16.170.0\lib\net462\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DTOs\BillDTO.cs" />
+    <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\GenreDTO.cs" />
+    <Compile Include="DTOs\MovieDTO.cs" />
+    <Compile Include="DTOs\ProductBillInfoDTO.cs" />
+    <Compile Include="DTOs\ProductDTO.cs" />
+    <Compile Include="DTOs\ProductReceiptDTO.cs" />
+    <Compile Include="DTOs\RoomDTO.cs" />
+    <Compile Include="DTOs\SeatDTO.cs" />
+    <Compile Include="DTOs\SeatSettingDTO.cs" />
+    <Compile Include="DTOs\ShowtimeDTO.cs" />
+    <Compile Include="DTOs\StaffDTO.cs" />
+    <Compile Include="DTOs\TicketDTO.cs" />
+    <Compile Include="DTOs\TicketBillInfoDTO.cs" />
+    <Compile Include="DTOs\TroubleDTO.cs" />
+    <Compile Include="DTOs\VoucherDTO.cs" />
+    <Compile Include="DTOs\VoucherReleaseDTO.cs" />
+    <Compile Include="Models\Bill.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CinemaManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CinemaManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CinemaManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genre.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Movie.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductBillInfo.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductReceipt.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Room.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seat.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeatSetting.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\BillService.cs" />
+    <Compile Include="Models\Services\BookingService.cs" />
+    <Compile Include="Models\Services\CustomerService.cs" />
+    <Compile Include="Models\Services\GenreService.cs" />
+    <Compile Include="Models\Services\MovieService.cs" />
+    <Compile Include="Models\Services\Overview.StatisticService.cs" />
+    <Compile Include="Models\Services\ProductReceiptService.cs" />
+    <Compile Include="Models\Services\ProductService.cs" />
+    <Compile Include="Models\Services\SeatService.cs" />
+    <Compile Include="Models\Services\ShowtimeService.cs" />
+    <Compile Include="Models\Services\StaffService.cs" />
+    <Compile Include="Models\Services\StatisticsService.cs" />
+    <Compile Include="Models\Services\TroubleService.cs" />
+    <Compile Include="Models\Services\VoucherService.cs" />
+    <Compile Include="Models\Showtime.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShowtimeSetting.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Staff.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ticket.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trouble.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Voucher.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VoucherRelease.cs">
+      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Constant.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\RegexUtilities.cs" />
+    <Compile Include="Utils\CloudinaryService.cs" />
+    <Compile Include="ViewModel\AdminVM\CustomerManagementVM\CustomerManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ErrorVM\ErrorViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ErrorVM\HintLevelConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\ErrorVM\StatusBrushConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\FoodManagementVM\AddFoodViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\FoodManagementVM\EditFoodViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\FoodManagementVM\ImportFoodViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\Import_ExportManagementVM\Import_ExportManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\MainAdminViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Add.MovieViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Edit.MovieViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Infor.MovieWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\MovieManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\Add.ShowtimeWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\Infor_EditShowtimeViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\SeatStatusConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\ShowtimeManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\AddStaffViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\ChangePasswordWindowVM.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\EditStaffViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\BestSelling.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Income.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\IndexConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Ranking.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\StatisticalManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\Infor_EditWindowVM\Infor_EditViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\VoucherViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\LoginVM\ForgotPassViewModel.cs" />
+    <Compile Include="ViewModel\LoginVM\LoginViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\IsAdminConverter.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TroubleWindowVM\AddError.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TroubleWindowVM\TroublePageViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TroubleWindowVM\EditConverter.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TroubleWindowVM\EditError.cs" />
+    <Compile Include="ViewModel\StaffViewModel\MainStaffViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\MovieScheduleWindowVM\MovieScheduleWindowViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\OrderFoodWindowVM\OrderFoodPageViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\ShowtimePageVM\ShowtimePageViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TicketBillVM\TicketBillViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TicketVM\TicketBookingPageViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel\TicketVM\TicketWindowViewModel.cs" />
+    <Compile Include="Views\Admin\CustomerManagement\CustomerManagement.xaml.cs">
+      <DependentUpon>CustomerManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\CustomerManagement\EditCustomer.xaml.cs">
+      <DependentUpon>EditCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ErrorManagement\DoneError.xaml.cs">
+      <DependentUpon>DoneError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ErrorManagement\ErrorManagement.xaml.cs">
+      <DependentUpon>ErrorManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ErrorManagement\InprogressError.xaml.cs">
+      <DependentUpon>InprogressError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ErrorManagement\WaitingError.xaml.cs">
+      <DependentUpon>WaitingError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\FoodManagementPage\AddFoodWindow.xaml.cs">
+      <DependentUpon>AddFoodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\FoodManagementPage\EditFoodWindow.xaml.cs">
+      <DependentUpon>EditFoodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\FoodManagementPage\FoodPage.xaml.cs">
+      <DependentUpon>FoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\FoodManagementPage\ImportFoodWindow.xaml.cs">
+      <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\ExportDetail.xaml.cs">
+      <DependentUpon>ExportDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\ExportPage.xaml.cs">
+      <DependentUpon>ExportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\ImportPage.xaml.cs">
+      <DependentUpon>ImportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\Import_Export.xaml.cs">
+      <DependentUpon>Import_Export.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\ProductDetail.xaml.cs">
+      <DependentUpon>ProductDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Import_ExportManagement\TicketDetail.xaml.cs">
+      <DependentUpon>TicketDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\MainAdminWindow.xaml.cs">
+      <DependentUpon>MainAdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\MovieManagement\AddMovieWindow.xaml.cs">
+      <DependentUpon>AddMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\MovieManagement\EditMovie.xaml.cs">
+      <DependentUpon>EditMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\MovieManagement\InforMovieWindow.xaml.cs">
+      <DependentUpon>InforMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\MovieManagement\MovieManagement.xaml.cs">
+      <DependentUpon>MovieManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StaffManagement\ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StaffManagement\StaffManagementPage.xaml.cs">
+      <DependentUpon>StaffManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StaffManagement\EditStaffWindow.xaml.cs">
+      <DependentUpon>EditStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StaffManagement\AddStaffWindow.xaml.cs">
+      <DependentUpon>AddStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ShowtimeManagement\AddShowtimeWindow.xaml.cs">
+      <DependentUpon>AddShowtimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ShowtimeManagement\Infor_EditShowtimeWindow.xaml.cs">
+      <DependentUpon>Infor_EditShowtimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ShowtimeManagement\ShowtimeManagement.xaml.cs">
+      <DependentUpon>ShowtimeManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StatisticalManagement\BestSellingStatistical.xaml.cs">
+      <DependentUpon>BestSellingStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StatisticalManagement\IncomeStatistical.xaml.cs">
+      <DependentUpon>IncomeStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StatisticalManagement\RankingStatistical.xaml.cs">
+      <DependentUpon>RankingStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StatisticalManagement\StatisticalManagement.xaml.cs">
+      <DependentUpon>StatisticalManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddInfor.xaml.cs">
+      <DependentUpon>AddInfor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddListMiniVoucher.xaml.cs">
+      <DependentUpon>AddListMiniVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddMiniVoucher.xaml.cs">
+      <DependentUpon>AddMiniVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddVoucher.xaml.cs">
+      <DependentUpon>AddVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddWindow.xaml.cs">
+      <DependentUpon>AddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml.cs">
+      <DependentUpon>ReleaseVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\Infor_EditWindow\Edit_InforPage.xaml.cs">
+      <DependentUpon>Edit_InforPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\Infor_EditWindow\Infor_EditWindow.xaml.cs">
+      <DependentUpon>Infor_EditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\VoucherManagement\VoucherManagement.xaml.cs">
+      <DependentUpon>VoucherManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow\ChangePassPage.xaml.cs">
+      <DependentUpon>ChangePassPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow\ForgotPassPage.xaml.cs">
+      <DependentUpon>ForgotPassPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow\RolePage.xaml.cs">
+      <DependentUpon>RolePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessageBoxCustom.xaml.cs">
+      <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TroubleWindow\AddError.xaml.cs">
+      <DependentUpon>AddError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TroubleWindow\TroublePage.xaml.cs">
+      <DependentUpon>TroublePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TroubleWindow\EditError.xaml.cs">
+      <DependentUpon>EditError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TroubleWindow\ViewError.xaml.cs">
+      <DependentUpon>ViewError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\MainStaffWindow.xaml.cs">
+      <DependentUpon>MainStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\MovieScheduleWindow\MovieScheduleWindow.xaml.cs">
+      <DependentUpon>MovieScheduleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\OrderFoodWindow\FoodPage.xaml.cs">
+      <DependentUpon>FoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\ShowtimePage\ShowtimePage.xaml.cs">
+      <DependentUpon>ShowtimePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TicketBill\TicketBillNoFoodPage.xaml.cs">
+      <DependentUpon>TicketBillNoFoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TicketBill\TicketBillOnlyFoodPage.xaml.cs">
+      <DependentUpon>TicketBillOnlyFoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TicketBill\TicketBillPage.xaml.cs">
+      <DependentUpon>TicketBillPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TicketWindow\TicketBookingPage.xaml.cs">
+      <DependentUpon>TicketBookingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TicketWindow\TicketWindow.xaml.cs">
+      <DependentUpon>TicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Scrollbar\Scrollbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\CustomerManagement\CustomerManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\CustomerManagement\EditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ErrorManagement\DoneError.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\ErrorManagement\ErrorManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\ErrorManagement\InprogressError.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\ErrorManagement\WaitingError.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\FoodManagementPage\AddFoodWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\FoodManagementPage\EditFoodWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\FoodManagementPage\FoodPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\FoodManagementPage\ImportFoodWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\ExportDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\ExportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\ImportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\Import_Export.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\ProductDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Import_ExportManagement\TicketDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\MainAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\MovieManagement\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\MovieManagement\EditMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\MovieManagement\InforMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\MovieManagement\MovieManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\StaffManagement\ChangePasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\StaffManagement\StaffManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\StaffManagement\EditStaffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\StaffManagement\AddStaffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\ShowtimeManagement\AddShowtimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\ShowtimeManagement\Infor_EditShowtimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ShowtimeManagement\ShowtimeManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Admin\StatisticalManagement\BestSellingStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\StatisticalManagement\IncomeStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\StatisticalManagement\RankingStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\StatisticalManagement\StatisticalManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddInfor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddListMiniVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddMiniVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\Infor_EditWindow\Edit_InforPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\Infor_EditWindow\Infor_EditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\VoucherManagement\VoucherManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow\ChangePassPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow\ForgotPassPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow\RolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageBoxCustom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\TroubleWindow\AddError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\TroubleWindow\TroublePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\TroubleWindow\EditError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\TroubleWindow\ViewError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\MainStaffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\MovieScheduleWindow\MovieScheduleWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\OrderFoodWindow\FoodPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\ShowtimePage\ShowtimePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\TicketBill\TicketBillNoFoodPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\TicketBill\TicketBillOnlyFoodPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\TicketBill\TicketBillPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\TicketWindow\TicketBookingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Staff\TicketWindow\TicketWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Font\GoogleSans-Regular.otf" />
+    <Resource Include="Font\Ubuntu-Bold.ttf" />
+    <EntityDeploy Include="Models\CinemaManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CinemaManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include=".env" />
+    <None Include="Models\CinemaManagementModel.edmx.diagram">
+      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Font\junegull.ttf" />
+    <Resource Include="Resources\Admin\MovieGenreSource.txt" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\1.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\2.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\3.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Icon\iconApp.ico" />
+    <Content Include="Models\CinemaManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CinemaManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\EmailTemplate\common_template.html" />
+    <Content Include="Resources\EmailTemplate\new_customer.html" />
+    <Resource Include="Resources\Images\Email\poster.png" />
+    <Resource Include="Resources\Images\Email\thank_you.png" />
+    <Resource Include="Resources\Images\Email\welcome.png" />
+    <Resource Include="Resources\EmailTemplate\reset_password_html.txt" />
+    <Content Include="Resources\EmailTemplate\top5_customer_gratitude.html" />
+    <Resource Include="Resources\Icon\award1.png" />
+    <Resource Include="Resources\Icon\pencil.png" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\5.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\6.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\7.jpg" />
+    <Resource Include="Resources\LayoutSignin\StoryboardMovie\8.jpg" />
+    <Resource Include="Resources\Icon\error.png" />
+    <Resource Include="Resources\Icon\ErrorIcon.png" />
+    <Resource Include="Resources\Icon\info.png" />
+    <Resource Include="Resources\Icon\Money.jpg" />
+    <Resource Include="Resources\Icon\succes.png" />
+    <Resource Include="Resources\Icon\warning.png" />
+    <Resource Include="Resources\FoodLayout\Icon\Money.jpg" />
+    <Resource Include="Resources\Images\ImageFood\add-image.png" />
+    <Resource Include="Resources\Images\ImageFood\adding.png" />
+    <Resource Include="Resources\Images\ImageFood\delete.png" />
+    <Resource Include="Resources\Images\ImageFood\dong.png" />
+    <Resource Include="Resources\Images\ImageFood\edit.png" />
+    <Resource Include="Resources\Images\ImageFood\pop-corn.png" />
+    <Resource Include="Resources\Images\ImageFood\popcorn.png" />
+    <Resource Include="Resources\Images\ImageStaff\add-user.png" />
+    <Resource Include="Resources\Images\ImageStaff\delete.png" />
+    <Resource Include="Resources\Images\ImageStaff\pencil.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

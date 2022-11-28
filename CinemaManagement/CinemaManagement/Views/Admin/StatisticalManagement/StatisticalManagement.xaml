@@ -1,0 +1,71 @@
+﻿<Page x:Class="CinemaManagement.Views.Admin.StatisticalManagement.StatisticalManagement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" mc:Ignorable="d" Height="Auto" Width="Auto" FontFamily="arial" DataContext="{StaticResource StatisticalManagementVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding StoreButtonNameCM}" CommandParameter="{Binding ElementName=card1}" />
+            <i:InvokeCommandAction Command="{Binding LoadViewCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="90*" />
+        </Grid.RowDefinitions>
+
+        <!--Filter-->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8">
+
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="56" Background="#f0f2f5">
+                <materialDesign:Card Height="56" Background="#f0f2f5" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom" x:Name="card1">
+                    <Button Height="56" Content="Tổng thu chi" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadAllStatisticalCM}" CommandParameter="{Binding ElementName=card1}" />
+                </materialDesign:Card>
+                <materialDesign:Card Height="57" Background="#f0f2f5" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom" BorderThickness="0" x:Name="card2">
+                    <Button Height="57" Content="Bảng xếp hạng" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadRankStatisticalCM}" CommandParameter="{Binding ElementName=card2}" />
+                </materialDesign:Card>
+                <materialDesign:Card Height="57" Background="#f0f2f5" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom" BorderThickness="0" x:Name="card3">
+                    <Button Height="57" Content="Xu hướng" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadBestSellingCM}" CommandParameter="{Binding ElementName=card3}" />
+                </materialDesign:Card>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <!---FRAME-->
+        <Grid Grid.Row="1" Margin="8">
+            <Frame x:Name="mainFrame" Content="">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadAllStatisticalCM}" CommandParameter="{Binding ElementName=card1}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Frame>
+
+        </Grid>
+
+        <Grid VerticalAlignment="Top" Height="512" Background="Transparent" Grid.RowSpan="2">
+            <ProgressBar Grid.RowSpan="2" IsIndeterminate="{Binding IsLoading}" BorderThickness="0" VerticalAlignment="Top" Margin="0,60,0,0" x:Name="load" Height="4" />
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=load,Path=IsIndeterminate}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Grid.Style>
+        </Grid>
+
+    </Grid>
+
+
+</Page>
