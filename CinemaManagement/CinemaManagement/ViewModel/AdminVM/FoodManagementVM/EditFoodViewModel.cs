@@ -40,14 +40,14 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                 {
                     if (Image != null)
                     {
-                       await CloudinaryService.Ins.DeleteImage(Image);
+                        await CloudinaryService.Ins.DeleteImage(Image);
                     }
 
                     product.Image = await Task.Run(() => CloudinaryService.Ins.UploadImage(filepath));
 
                     if (product.Image is null)
                     {
-                        MessageBoxCustom mb = new MessageBoxCustom("Thông báo", "Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", MessageType.Error, MessageButtons.OK);
+                        new MessageBoxCustom("Thông báo", "Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", MessageType.Error, MessageButtons.OK);
                         return;
                     }
                 }
@@ -62,22 +62,21 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                 {
                     isSaving = false;
                     LoadProductListView(Operation.UPDATE, product);
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromUpdateProduct, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
-                    MaskName.Visibility = Visibility.Collapsed;
+                    new MessageBoxCustom("Thông báo", messageFromUpdateProduct, MessageType.Success, MessageButtons.OK);
+
                     p.Close();
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdateProduct, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", messageFromUpdateProduct, MessageType.Error, MessageButtons.OK);
+
                 }
 
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đủ thông tin!", MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đủ thông tin!", MessageType.Warning, MessageButtons.OK);
+
             }
         }
     }

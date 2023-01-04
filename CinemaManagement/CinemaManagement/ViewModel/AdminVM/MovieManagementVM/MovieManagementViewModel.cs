@@ -184,14 +184,14 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
                 catch (System.Data.Entity.Core.EntityException e)
                 {
                     Console.WriteLine(e);
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                 }
 
                 InsertCountryToComboBox();
@@ -210,7 +210,6 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
                 RenewWindowData();
                 Window w1 = new AddMovieWindow();
 
-                MaskName.Visibility = Visibility.Visible;
                 w1.ShowDialog();
 
             });
@@ -220,7 +219,6 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
                 RenewWindowData();
                 InforMovieWindow w1 = new InforMovieWindow();
                 LoadInforMovie(w1);
-                MaskName.Visibility = Visibility.Visible;
                 w1.ShowDialog();
             });
             LoadEditMovieCM = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -228,37 +226,35 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
 
                 EditMovie w1 = new EditMovie();
                 LoadEditMovie(w1);
-                MaskName.Visibility = Visibility.Visible;
                 w1.ShowDialog();
             });
-            LoadDeleteMovieCM = new RelayCommand<object>((p) => { return true; },async (p) =>
+            LoadDeleteMovieCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
              {
                  Image = SelectedItem.Image;
-                 string message = "Bạn có chắc muốn xoá phim này không? Dữ liệu không thể phục hồi sau khi xoá!";
+                 string message = "Xoá phim này?";
                  MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", message, MessageType.Warning, MessageButtons.YesNo);
-                 result.ShowDialog();
                  switch (result.DialogResult)
                  {
                      case true:
                          {
                              IsLoadding = true;
-                             
+
                              (bool successDelMovie, string messageFromDelMovie) = await MovieService.Ins.DeleteMovie(SelectedItem.Id);
-                             
+
                              IsLoadding = false;
 
                              if (successDelMovie)
                              {
                                  LoadMovieListView(Operation.DELETE);
                                  SelectedItem = null;
-                                 MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromDelMovie, MessageType.Success, MessageButtons.OK);
-                                 mb.ShowDialog();
+                                 new MessageBoxCustom("Thông báo", messageFromDelMovie, MessageType.Success, MessageButtons.OK);
+
                                  break;
                              }
                              else
                              {
-                                 MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromDelMovie, MessageType.Error, MessageButtons.OK);
-                                 mb.ShowDialog();
+                                 new MessageBoxCustom("Lỗi", messageFromDelMovie, MessageType.Error, MessageButtons.OK);
+
                                  break;
                              }
                          }
@@ -297,7 +293,6 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
              });
             CloseCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                MaskName.Visibility = Visibility.Collapsed;
                 SelectedItem = null;
                 p.Close();
             });

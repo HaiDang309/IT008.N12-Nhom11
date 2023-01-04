@@ -22,8 +22,8 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 {
                     if (!Utils.RegexUtilities.IsValidEmail(Mail))
                     {
-                        MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Email không hợp lệ", MessageType.Warning, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Cảnh báo", "Email không hợp lệ", MessageType.Warning, MessageButtons.OK);
+
                         return;
                     }
                 }
@@ -48,20 +48,20 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 {
                     LoadStaffListView(Utils.Operation.UPDATE, staff);
                     p.Close();
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromUpdateStaff, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Thông báo", messageFromUpdateStaff, MessageType.Success, MessageButtons.OK);
+
                     MaskName.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdateStaff, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", messageFromUpdateStaff, MessageType.Error, MessageButtons.OK);
+
                 }
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
+
             }
         }
     }

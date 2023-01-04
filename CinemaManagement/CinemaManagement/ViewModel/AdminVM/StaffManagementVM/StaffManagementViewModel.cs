@@ -156,14 +156,14 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 catch (System.Data.Entity.Core.EntityException e)
                 {
                     Console.WriteLine(e);
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                 }
             });
             GetListViewCommand = new RelayCommand<ListView>((p) => { return true; },
@@ -206,8 +206,7 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
             DeleteStaffCommand = new RelayCommand<Window>((p) => { return true; },
                  async (p) =>
                 {
-                    MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", "Bạn có chắc muốn xoá nhân viên này không?", MessageType.Warning, MessageButtons.YesNo);
-                    result.ShowDialog();
+                    MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", "Xoá nhân viên này?", MessageType.Warning, MessageButtons.YesNo);
 
                     if (result.DialogResult == true)
                     {
@@ -216,12 +215,12 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                         {
                             LoadStaffListView(Utils.Operation.DELETE);
                             MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromDeleteStaff, MessageType.Success, MessageButtons.OK);
-                            mb.ShowDialog();
+
                         }
                         else
                         {
                             MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromDeleteStaff, MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+
                         }
                     }
                 });
@@ -231,7 +230,6 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 {
                     ThemNhanVienWindow wd = new ThemNhanVienWindow();
                     ResetData();
-                    MaskName.Visibility = Visibility.Visible;
                     wd.ShowDialog();
 
                 });
@@ -262,7 +260,6 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                     TaiKhoan = SelectedItem.Username;
                     Mail = SelectedItem.Email;
 
-                    MaskName.Visibility = Visibility.Visible;
                     wd.ShowDialog();
                 });
 
@@ -286,7 +283,6 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                         w.Close();
                         return;
                     }
-                    MaskName.Visibility = Visibility.Collapsed;
                     w.Close();
                 }
             }

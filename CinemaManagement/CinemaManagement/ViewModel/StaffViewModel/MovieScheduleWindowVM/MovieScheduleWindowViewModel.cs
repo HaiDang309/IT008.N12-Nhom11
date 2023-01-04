@@ -55,7 +55,6 @@ namespace CinemaManagement.ViewModel.StaffViewModel.MovieScheduleWindowVM
              });
             CloseCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                MainStaffViewModel.MaskName.Visibility = Visibility.Collapsed;
                 p.Close();
             });
 

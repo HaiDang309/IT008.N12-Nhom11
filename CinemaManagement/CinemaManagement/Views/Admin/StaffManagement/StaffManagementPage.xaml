@@ -38,13 +38,8 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="8" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center">
             <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" FontSize="25" Foreground="#DD000000" FontFamily="Arial" AllowDrop="True" BorderThickness="0,0,0,1" Width="256" Padding="0" Margin="30,0,0,0" x:Name="SearchBox" TextChanged="TextBox_TextChanged" VerticalAlignment="Center">
             </TextBox>
-            <Button Width="120" Height="40" FontSize="25" FontFamily="arial" Margin="30,0,0,0" Padding="0" VerticalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="8" Style="{StaticResource MaterialDesignOutlinedLightButton}" Command="{Binding OpenAddStaffCommand}">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="PlusCircleOutline" Width="25" Height="25" VerticalAlignment="Center" Margin="0,0,0,0" />
-                        <TextBlock Text="Thêm" Margin="5,0,0,0" />
-                    </StackPanel>
-                </Button.Content>
+            <Button Margin="30,0,0,0" VerticalAlignment="Center" Command="{Binding OpenAddStaffCommand}">
+                Thêm
             </Button>
         </StackPanel>
 
@@ -120,34 +115,17 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="20,0,0,0">
-                                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="6" Cursor="Hand">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Background" Value="#00e5ff" />
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <Image Source="/Resources/Icon/pencil.png" Width="30" Height="30" Cursor="Hand" />
+                                            <Border BorderBrush="DarkOrange" BorderThickness="1" CornerRadius="6" Cursor="Hand">
+                                                
+                                                <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="DarkOrange"/>
                                                 <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="MouseLeftButtonUp">
                                                         <i:InvokeCommandAction Command="{Binding ElementName=_ListView, Path=DataContext.OpenEditStaffCommand}" />
                                                     </i:EventTrigger>
                                                 </i:Interaction.Triggers>
                                             </Border>
-                                            <Border Margin="10 0 0 0" BorderBrush="Black" BorderThickness="1" CornerRadius="6" Cursor="Hand">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Background" Value="#ff6255" />
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <materialDesign:PackIcon Kind="GarbageCanEmpty" Width="30" Height="30" Cursor="Hand" />
+                                            <Border Margin="10 0 0 0" BorderBrush="Red" BorderThickness="1" CornerRadius="6" Cursor="Hand">
+                                                <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" Cursor="Hand" Foreground="Red" />
                                                 <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="MouseLeftButtonUp">
                                                         <i:InvokeCommandAction Command="{Binding ElementName=_ListView, Path=DataContext.DeleteStaffCommand}" />

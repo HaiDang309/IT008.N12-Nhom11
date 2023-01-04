@@ -453,14 +453,14 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketBillVM
                             }
                             else
                             {
-                                MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Số điện thoại không hợp lệ", MessageType.Error, MessageButtons.OK);
+                                MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Số điện thoại không hợp lệ!", MessageType.Error, MessageButtons.OK);
                                 mess.ShowDialog();
                             }
                         }
                     }
                     else
                     {
-                        new MessageBoxCustom("Cảnh báo", "Số điện thoại không được để trống", MessageType.Warning, MessageButtons.OK).ShowDialog();
+                        new MessageBoxCustom("Cảnh báo", "Số điện thoại không hợp lệ!", MessageType.Warning, MessageButtons.OK);
                     }
                     if (ListVoucher != null)
                     {
@@ -490,7 +490,7 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketBillVM
                                 {
                                     customer.PhoneNumber = PhoneNumber;
                                     customer.Name = NameSignUp;
-                                    IsSaving = true; 
+                                    IsSaving = true;
 
                                     (bool successAddCustomer, string messageFromAddCustomer, string newCustomer) = await CustomerService.Ins.CreateNewCustomer(customer);
                                     IsSaving = false;
@@ -555,7 +555,7 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketBillVM
                         new MessageBoxCustom("Cảnh báo", "Vui lòng nhập số điện thoại", MessageType.Warning, MessageButtons.OK).ShowDialog();
                     }
 
-             });
+                });
 
             AddVoucherCM = new RelayCommand<object>((p) => { return true; },
                 async (p) =>
@@ -1006,13 +1006,11 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketBillVM
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                        mess.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
                     }
                     catch (Exception e)
                     {
-                        MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                        mess.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
                     }
 
                 });

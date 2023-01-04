@@ -69,5 +69,10 @@ namespace CinemaManagement.Views.Admin.ShowtimeManagementVM
         {
             this.DragMove();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -22,8 +22,8 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 {
                     if (!Utils.RegexUtilities.IsValidEmail(Mail))
                     {
-                        MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Email không hợp lệ", MessageType.Warning, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Cảnh báo", "Email không hợp lệ", MessageType.Warning, MessageButtons.OK);
+
                         return;
                     }
                 }
@@ -47,23 +47,22 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
 
                 if (successAddStaff)
                 {
-                    MaskName.Visibility = Visibility.Collapsed;
                     LoadStaffListView(Operation.CREATE, newStaff);
                     p.Close();
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromAddStaff, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Thông báo", messageFromAddStaff, MessageType.Success, MessageButtons.OK);
+
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromAddStaff, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", messageFromAddStaff, MessageType.Error, MessageButtons.OK);
+
                 }
 
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
+
             }
         }
         private (bool, string) ValidateAge(DateTime birthDate)

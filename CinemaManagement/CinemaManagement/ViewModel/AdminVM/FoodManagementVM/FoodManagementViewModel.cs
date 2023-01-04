@@ -169,14 +169,14 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                  catch (System.Data.Entity.Core.EntityException e)
                  {
                      Console.WriteLine(e);
-                     MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                     mb.ShowDialog();
+                     new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                  }
                  catch (Exception e)
                  {
                      Console.WriteLine(e);
-                     MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                     mb.ShowDialog();
+                     new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                  }
 
                  IsImageChanged = false;
@@ -216,14 +216,14 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                     catch (System.Data.Entity.Core.EntityException e)
                     {
                         Console.WriteLine(e);
-                        MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                     }
 
                 });
@@ -240,7 +240,6 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                 {
                     ImportFoodWindow wd = new ImportFoodWindow();
                     LoadImportFoodWindow(wd);
-                    MaskName.Visibility = Visibility.Visible;
                     wd.ShowDialog();
                 });
             ImportFoodCommand = new RelayCommand<Window>((p) => { if (IsSaving) return false; return true; }, async (p) =>
@@ -256,7 +255,6 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                 {
                     RenewWindowData();
                     AddFoodWindow wd = new AddFoodWindow();
-                    MaskName.Visibility = Visibility.Visible;
                     wd.ShowDialog();
                 });
             AddFoodCommand = new RelayCommand<Window>((p) => { if (IsSaving) return false; return true; }, async (p) =>
@@ -293,7 +291,6 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
 
                      }
 
-                     MaskName.Visibility = Visibility.Visible;
                      wd.ShowDialog();
 
                  });
@@ -308,7 +305,6 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                       Image = SelectedItem.Image;
                       Id = SelectedItem.Id;
                       MessageBoxCustom mbx = new MessageBoxCustom("Cảnh báo", "Bạn có chắc muốn xoá sản phẩm này không?", MessageType.Warning, MessageButtons.YesNo);
-                      mbx.ShowDialog();
                       if (mbx.DialogResult == true)
                       {
                           IsLoadding = true;
@@ -319,16 +315,16 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
 
                           if (successDelMovie)
                           {
-                              MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromDelMovie, MessageType.Success, MessageButtons.OK);
-                              mb.ShowDialog();
+                              new MessageBoxCustom("Thông báo", messageFromDelMovie, MessageType.Success, MessageButtons.OK);
+
                               LoadProductListView(Operation.DELETE);
                               SelectedItem = null;
                               return;
                           }
                           else
                           {
-                              MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromDelMovie, MessageType.Error, MessageButtons.OK);
-                              mb.ShowDialog();
+                              new MessageBoxCustom("Lỗi", messageFromDelMovie, MessageType.Error, MessageButtons.OK);
+
                               return;
                           }
                       }
@@ -340,7 +336,6 @@ namespace CinemaManagement.ViewModel.AdminVM.FoodManagementVM
                 var w = window as Window;
                 if (w != null)
                 {
-                    MaskName.Visibility = Visibility.Collapsed;
                     w.Close();
                 }
             });

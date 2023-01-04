@@ -162,7 +162,6 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketVM
         public async Task GenerateSeat()
         {
 
-            //
             ListSeat = new List<SeatSettingDTO>(await SeatService.Ins.GetSeatsByShowtime(CurrentShowtime.Id));
             ListStatusSeat = new List<SeatSettingDTO>();
             ListSeat1 = new ObservableCollection<SeatSettingDTO>();

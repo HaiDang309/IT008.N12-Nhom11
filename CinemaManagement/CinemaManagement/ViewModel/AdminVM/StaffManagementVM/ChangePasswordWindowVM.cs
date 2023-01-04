@@ -19,20 +19,20 @@ namespace CinemaManagement.ViewModel.AdminVM.StaffManagementVM
                 if (updatePassSuccesss)
                 {
                     p.Close();
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
+
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
+
                 }
 
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
+
             }
         }
         public (bool valid, string error) IsValidPassword(Operation oper)

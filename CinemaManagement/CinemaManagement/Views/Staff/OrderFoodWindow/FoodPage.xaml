@@ -1,27 +1,14 @@
 ﻿<Page x:Class="CinemaManagement.Views.Staff.OrderFoodWindow.FoodPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d"
-      TextElement.FontSize="13"
-      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-      TextOptions.TextFormattingMode="Ideal"
-      TextOptions.TextRenderingMode="Auto"
-      Background="#f3f5f7"
-      DataContext="{StaticResource OrderFoodPageVM}"
-      Width="Auto"
-      Height="Auto"
-      FontFamily="Arial"
-      x:Name="Food_Page"
-      ShowsNavigationUI="False">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" mc:Ignorable="d" TextElement.FontSize="13" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="#f3f5f7" DataContext="{StaticResource OrderFoodPageVM}" Width="Auto" Height="Auto" FontFamily="Arial" x:Name="Food_Page" ShowsNavigationUI="False">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding Path=StoreCardViewCM}"
-                                   CommandParameter="{Binding ElementName=all}" />
+            <i:InvokeCommandAction Command="{Binding Path=StoreCardViewCM}" CommandParameter="{Binding ElementName=all}" />
             <i:InvokeCommandAction Command="{Binding Path=FirstLoadCM}" />
             <i:InvokeCommandAction Command="{Binding Path=FilterAllProductsCommand}" />
         </i:EventTrigger>
@@ -29,65 +16,46 @@
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="90*" />
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Border CornerRadius="90"
-                        Height="56"
-                        Width="56"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="16"
-                        Cursor="Hand">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0">
+                <Border CornerRadius="16" Height="32" Width="32" Cursor="Hand">
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Setter Property="Background"
-                                            Value="#e0e0e0" />
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#e0e0e0" />
                                 </Trigger>
-                                <DataTrigger Binding="{Binding ShowBackIcon}"
-                                             Value="False">
-                                    <Setter Property="Visibility"
-                                            Value="Collapsed" />
+                                <DataTrigger Binding="{Binding ShowBackIcon}" Value="False">
+                                    <Setter Property="Visibility" Value="Collapsed" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Border.Style>
-                    <materialDesign:PackIcon Kind="ArrowLeft"
-                                             Height="45"
-                                             Width="45"
-                                             VerticalAlignment="Center"
-                                             HorizontalAlignment="Center" />
+                    <materialDesign:PackIcon Kind="ArrowLeft" Height="32" Width="32" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding BackToMovieBookingPageCM}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Border>
-                <TextBlock Text="Danh mục sản phẩm"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           Grid.Column="0" VerticalAlignment="Center" />
+                <TextBlock Text="Danh mục sản phẩm" FontSize="20" FontWeight="Bold" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" />
 
             </StackPanel>
 
-            
+
         </Grid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="72*" />
-                <ColumnDefinition Width="28*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
 
-            <materialDesign:Card Grid.Column="0"
-                                 UniformCornerRadius="8"
-                                 Margin="5">
+            <materialDesign:Card Grid.Column="0" UniformCornerRadius="8" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
@@ -95,103 +63,70 @@
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0" Margin="8" BorderThickness="0,0,0,1" BorderBrush="#c4c4c4">
-                        <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                             <StackPanel.Resources>
                                 <Style TargetType="materialDesign:Card">
-                                    <Setter Property="Width"
-                                        Value="308.5" />
-                                    <Setter Property="Height"
-                                        Value="40" />
-                                    <Setter Property="FontSize"
-                                        Value="25" />
-                                    <Setter Property="Background"
-                                        Value="#f0f2f5" />
+                                    <Setter Property="Width" Value="308.5" />
+                                    <Setter Property="Height" Value="40" />
+                                    <Setter Property="FontSize" Value="25" />
+                                    <Setter Property="Background" Value="#f0f2f5" />
                                 </Style>
                             </StackPanel.Resources>
-                            <materialDesign:Card x:Name="all"
-                                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                             materialDesign:ShadowAssist.ShadowEdges="None"
-                                             Background="White" Width="128">
+                            <!-- Tất cả -->
+                            <materialDesign:Card x:Name="all" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ShadowAssist.ShadowEdges="None" Background="White" Width="128">
                                 <materialDesign:Card.Content>
-                                    <TextBlock Text="Tất cả"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center" />
+                                    <TextBlock Text="Tất cả" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </materialDesign:Card.Content>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding Path=FilterAllProductsCommand}"
-                                                           CommandParameter="{Binding ElementName=all}" />
+                                        <i:InvokeCommandAction Command="{Binding Path=FilterAllProductsCommand}" CommandParameter="{Binding ElementName=all}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </materialDesign:Card>
-                            <materialDesign:Card Height="Auto"
-                                                 Width="128"
-                                             x:Name="food"
-                                             materialDesign:ShadowAssist.ShadowEdges="None">
+                            <!-- Đồ ăn -->
+                            <materialDesign:Card Height="Auto" Width="128" x:Name="food" materialDesign:ShadowAssist.ShadowEdges="None">
                                 <materialDesign:Card.Content>
-                                    <TextBlock Text="Đồ ăn"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center" />
+                                    <TextBlock Text="Đồ ăn" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </materialDesign:Card.Content>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding Path=FilterFoodCommand}"
-                                                           CommandParameter="{Binding ElementName=food}" />
+                                        <i:InvokeCommandAction Command="{Binding Path=FilterFoodCommand}" CommandParameter="{Binding ElementName=food}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </materialDesign:Card>
-                            <materialDesign:Card Height="Auto"
-                                                 Width="128"
-                                             x:Name="drink"
-                                             materialDesign:ShadowAssist.ShadowEdges="None">
+                            <!-- Nước uống -->
+                            <materialDesign:Card Height="Auto" Width="128" x:Name="drink" materialDesign:ShadowAssist.ShadowEdges="None">
                                 <materialDesign:Card.Content>
-                                    <TextBlock Text="Thức uống"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center" />
+                                    <TextBlock Text="Thức uống" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </materialDesign:Card.Content>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding Path=FilterDrinkCommand}"
-                                                           CommandParameter="{Binding ElementName=drink}" />
+                                        <i:InvokeCommandAction Command="{Binding Path=FilterDrinkCommand}" CommandParameter="{Binding ElementName=drink}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </materialDesign:Card>
                         </StackPanel>
                     </Border>
 
-                    <ListBox Grid.Row="1" Background="Transparent"
-                             ItemsSource="{Binding MenuList}"
-                             SelectedItem="{Binding SelectedProductToOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             x:Name="lbxMenuProduct"
-                             Margin="8">
+                    <ListBox Grid.Row="1" Background="Transparent" ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedProductToOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="lbxMenuProduct" Margin="8">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
-                                <Setter Property="Background"
-                                        Value="Transparent" />
-                                <Setter Property="Foreground"
-                                        Value="Transparent" />
-                                <Setter Property="VerticalAlignment"
-                                        Value="Top" />
-                                <Setter Property="Margin"
-                                        Value="8" />
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Transparent" />
+                                <Setter Property="VerticalAlignment" Value="Top" />
+                                <Setter Property="Margin" Value="8" />
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                                             <Border x:Name="Bd">
-                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <MultiTrigger>
-                                                    <Setter Property="Foreground"
-                                                            Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}" />
                                                 </MultiTrigger>
-                                                <Trigger Property="IsMouseOver"
-                                                         Value="True">
-                                                    <Setter Property="IsSelected"
-                                                            Value="True" />
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="IsSelected" Value="True" />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -201,97 +136,77 @@
                         </ListBox.ItemContainerStyle>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="3" />
+                                <WrapPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <materialDesign:Card BorderThickness="1"
-                                                     UniformCornerRadius="5"
-                                                     Margin="4"
-                                                     HorizontalAlignment="Left"
-                                                     Width="200">
+                                <!-- <materialDesign:Card BorderThickness="1" UniformCornerRadius="5" Margin="4" HorizontalAlignment="Left" Width="200">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="8*"></RowDefinition>
                                             <RowDefinition Height="5*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Image}"
-                                               Height="128"
-                                               Width="128"
-                                               Stretch="Fill" Margin="4" />
+                                        <Image Source="{Binding Image}" Height="128" Width="128" Stretch="Fill" Margin="4" />
                                         <Grid Grid.Row="1">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="7*"></RowDefinition>
                                                 <RowDefinition Height="5*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Border BorderBrush="{x:Null}"
-                                                    Height="Auto"
-                                                    HorizontalAlignment="Left"
-                                                    VerticalAlignment="Center"
-                                                    Margin="4">
-                                                <TextBlock TextWrapping="Wrap"
-                                                           Text="{Binding DisplayName}"
-                                                           FontFamily="Arial"
-                                                           FontSize="20" />
+                                            <Border BorderBrush="{x:Null}" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4">
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding DisplayName}" FontFamily="Arial" FontSize="20" />
                                             </Border>
-                                            <Label 
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Center"
-                                                   Height="32"
-                                                   Width="32"
-                                                   Margin="4"
-                                                   x:Name="lblAddOrder"
-                                                   Cursor="Hand">
+                                            <Label HorizontalAlignment="Right" VerticalAlignment="Center" Height="32" Width="32" Margin="4" x:Name="lblAddOrder" Cursor="Hand">
                                                 <Label.Template>
                                                     <ControlTemplate TargetType="Label">
                                                         <Grid>
                                                             <Ellipse Fill="#FF42A7FF" />
-                                                            <ContentPresenter HorizontalAlignment="Center"
-                                                                              VerticalAlignment="Center" />
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </Label.Template>
-                                                <materialDesign:PackIcon Kind="Plus"
-                                                                         Foreground="WhiteSmoke"
-                                                                         HorizontalAlignment="Center"
-                                                                         VerticalAlignment="Center"
-                                                                         Width="Auto"
-                                                                         Height="Auto" />
+                                                <materialDesign:PackIcon Kind="Plus" Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" />
                                                 <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding ElementName=lbxMenuProduct, Path=DataContext.SelectedProductCommand}"
-                                                                  CommandParameter="{Binding ElementName=lblAddOrder}"
-                                                                  MouseAction="LeftClick" />
+                                                    <MouseBinding Command="{Binding ElementName=lbxMenuProduct, Path=DataContext.SelectedProductCommand}" CommandParameter="{Binding ElementName=lblAddOrder}" MouseAction="LeftClick" />
                                                 </Label.InputBindings>
                                             </Label>
 
                                             <DockPanel Grid.Row="1">
-                                                <StackPanel DockPanel.Dock="Right"
-                                                            VerticalAlignment="Center"
-                                                            HorizontalAlignment="Right"
-                                                            Orientation="Horizontal"
-                                                            Width="Auto"
-                                                            Margin="4">
-                                                    <materialDesign:PackIcon Kind="Tag"
-                                                                             Background="Transparent"
-                                                                             Foreground="Goldenrod"
-                                                                             Height="15"
-                                                                             Width="Auto" />
-                                                    <TextBlock Text="{Binding PriceStr}"
-                                                               FontFamily="Arial"
-                                                               VerticalAlignment="Center"
-                                                               Margin="2,0,0,0"
-                                                               FontSize="20" />
+                                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Width="Auto" Margin="4">
+                                                    <materialDesign:PackIcon Kind="Tag" Background="Transparent" Foreground="Goldenrod" Height="15" Width="Auto" />
+                                                    <TextBlock Text="{Binding PriceStr}" FontFamily="Arial" VerticalAlignment="Center" Margin="2,0,0,0" FontSize="20" />
                                                 </StackPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           Margin="5,0,5,0"
-                                                           Text="{Binding Quantity, StringFormat='SL: {0}',UpdateSourceTrigger=PropertyChanged}"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           FontSize="20" />
+                                                <TextBlock DockPanel.Dock="Left" Margin="5,0,5,0" Text="{Binding Quantity, StringFormat='SL: {0}',UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" />
                                             </DockPanel>
                                         </Grid>
+                                    </Grid>
+                                </materialDesign:Card> -->
+
+                                <materialDesign:Card Width="200">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="256"/>
+
+                                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding ElementName=lbxMenuProduct, Path=DataContext.SelectedProductCommand}" CommandParameter="{Binding ElementName=lblAddOrder}" Background="#243763" BorderBrush="#243763" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                                            <materialDesign:PackIcon Kind="Plus" />
+                                        </Button>
+
+                                        <StackPanel Grid.Row="1" Margin="8,4,8,0">
+                                            <TextBlock TextWrapping="Wrap" FontSize="18" FontWeight="Bold" Margin="0 0 0 3" VerticalAlignment="Center" Text="{Binding DisplayName}" />
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Quantity, StringFormat='Số lượng: {0}',UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="0 0 0 3" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Giá: " FontSize="14" Margin="0 0 0 3" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                                                    <TextBlock Text="{Binding PriceStr}" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 3 3" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </Grid>
                                 </materialDesign:Card>
                             </DataTemplate>
@@ -306,46 +221,29 @@
                     <RowDefinition Height="70*" />
                     <RowDefinition Height="20*" />
                 </Grid.RowDefinitions>
-                
-                <StackPanel Grid.Row="0"
-                        Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock FontFamily="Arial"
-                           FontSize="28"
-                           Foreground="dimgray"
-                           Text="Thanh toán" VerticalAlignment="Center" />
-                    
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock FontFamily="Arial" FontSize="20" FontWeight="Bold" Foreground="#000" Text="Thanh toán" VerticalAlignment="Center" />
                 </StackPanel>
 
-                <materialDesign:Card UniformCornerRadius="5"
-                                     Margin="8"
-                                     Grid.Row="1">
-                    <ListView ItemsSource="{Binding OrderList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              SelectedItem="{Binding SelectedProductToBill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              x:Name="lvOrderList">
+                <materialDesign:Card UniformCornerRadius="5" Margin="8" Grid.Row="1">
+                    <ListView ItemsSource="{Binding OrderList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedProductToBill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lvOrderList">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
-                                <Setter Property="Background"
-                                        Value="Transparent" />
-                                <Setter Property="Foreground"
-                                        Value="Transparent" />
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Transparent" />
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type ListViewItem}">
                                             <Border x:Name="Bd">
-                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <MultiTrigger>
-                                                    <Setter Property="Foreground"
-                                                            Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}" />
                                                 </MultiTrigger>
-                                                <Trigger Property="IsMouseOver"
-                                                         Value="True">
-                                                    <Setter Property="IsSelected"
-                                                            Value="True" />
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="IsSelected" Value="True" />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -355,77 +253,27 @@
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <materialDesign:Card UniformCornerRadius="5"
-                                                     Margin="5"
-                                                     Height="128"
-                                                     Width="256" HorizontalAlignment="Center">
+                                <materialDesign:Card UniformCornerRadius="5" Margin="4" HorizontalAlignment="Stretch">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="20*"></ColumnDefinition>
-                                            <ColumnDefinition Width="80*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Grid Grid.Column="0" HorizontalAlignment="Left" Width="64" Height="64" Margin="4">
-                                            <Image Source="{Binding Image}"
-                                                   Stretch="Fill" />
+                                        <Grid Grid.Column="0" HorizontalAlignment="Left" Width="128">
+                                            <Image Source="{Binding Image}" Stretch="Fill" />
                                         </Grid>
-                                        <Grid Grid.Column="1"
-                                              Margin="4">
-
+                                        <Grid Grid.Column="1" Margin="4">
                                             <StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock TextWrapping="Wrap"
-                                                               Text="{Binding DisplayName}"
-                                                               FontWeight="Bold"
-                                                               FontSize="14"/>
-                                                    <Label
-                                                       Height="32"
-                                                       Width="32"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Right"
-                                                       ToolTip="Xóa"
-                                                       Margin="0,0,15,0"
-                                                       Cursor="Hand">
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding DisplayName}" FontWeight="Bold" FontSize="14"/>
 
-                                                        <Label.Template>
-                                                            <ControlTemplate TargetType="Label">
-                                                                <Grid>
-                                                                    <Ellipse Fill="LightGray" />
-                                                                    <ContentPresenter HorizontalAlignment="Center"
-                                                                                  VerticalAlignment="Center" />
-                                                                </Grid>
-                                                            </ControlTemplate>
-                                                        </Label.Template>
-                                                        <materialDesign:PackIcon Kind="DeleteForever"
-                                                                             Foreground="Gray"
-                                                                             HorizontalAlignment="Center"
-                                                                             VerticalAlignment="Center"
-                                                                             Width="Auto"
-                                                                             Height="Auto"
-                                                                             BorderThickness="0" />
-                                                        <i:Interaction.Triggers>
-                                                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                                <i:InvokeCommandAction Command="{Binding ElementName=lvOrderList, Path=DataContext.DeleteProductCommand}" />
-                                                            </i:EventTrigger>
-                                                        </i:Interaction.Triggers>
-                                                    </Label>
-                                                </StackPanel>
-                                                <StackPanel 
-                                                       Margin="0">
-                                                    <StackPanel HorizontalAlignment="Left"
-                                                            VerticalAlignment="Top"
-                                                            Orientation="Horizontal" Margin="4">
 
-                                                        <Border Background="White"
-                                                            Width="30"
-                                                            BorderThickness="0.5"
-                                                            BorderBrush="Gray"
-                                                            Height="24"
-                                                            x:Name="lblMinus"
-                                                            Cursor="Hand">
+                                                <StackPanel Margin="0">
+                                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="4">
+
+                                                        <Border Background="White" Width="30" BorderThickness="0.5" BorderBrush="Gray" Height="24" x:Name="lblMinus" Cursor="Hand">
                                                             <Border>
-                                                                <materialDesign:PackIcon Kind="Minus"
-                                                                                     VerticalAlignment="Center"
-                                                                                     HorizontalAlignment="Center" />
+                                                                <materialDesign:PackIcon Kind="Minus" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                                             </Border>
                                                             <i:Interaction.Triggers>
                                                                 <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -434,25 +282,10 @@
                                                             </i:Interaction.Triggers>
                                                         </Border>
 
-                                                        <TextBox Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                             TextAlignment="Center"
-                                                             FontSize="15"
-                                                             Background="White"
-                                                             IsReadOnly="True"
-                                                             Width="35"
-                                                             Height="25"
-                                                             BorderThickness="0,0.5,0,0.5" />
-                                                        <Border Background="White"
-                                                            Width="32"
-                                                            BorderThickness="0.5"
-                                                            BorderBrush="Gray"
-                                                            Height="24"
-                                                            x:Name="lblPlus"
-                                                            Cursor="Hand">
+                                                        <TextBox Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" FontSize="15" Background="White" IsReadOnly="True" Width="35" Height="25" BorderThickness="0,0.5,0,0.5" />
+                                                        <Border Background="White" Width="32" BorderThickness="0.5" BorderBrush="Gray" Height="24" x:Name="lblPlus" Cursor="Hand">
                                                             <Grid>
-                                                                <materialDesign:PackIcon Kind="Plus"
-                                                                                     VerticalAlignment="Center"
-                                                                                     HorizontalAlignment="Center" />
+                                                                <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                                             </Grid>
                                                             <i:Interaction.Triggers>
                                                                 <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -461,10 +294,17 @@
                                                             </i:Interaction.Triggers>
                                                         </Border>
                                                     </StackPanel>
-                                                    <TextBlock Text="{Binding PriceStr}"
-                                                           FontSize="14" Margin="4" />
                                                 </StackPanel>
+                                                <TextBlock Text="{Binding PriceStr}" FontSize="14" Margin="4" />
+
                                             </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2" Margin="4">
+                                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="Red" BorderBrush="Red" Command="{Binding ElementName=lvOrderList, Path=DataContext.DeleteProductCommand}">
+                                                <materialDesign:PackIcon Kind="Delete" />
+                                            </Button>
+
                                         </Grid>
                                     </Grid>
                                 </materialDesign:Card>
@@ -474,87 +314,47 @@
                 </materialDesign:Card>
 
                 <Grid Grid.Row="2">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
-                            <TextBlock Text="Tổng:"
-                                       FontSize="18"
-                                       FontWeight="Bold"
-                                       FontFamily="Arial"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left" Margin="0,0,8,0"/>
-                            <TextBlock x:Name="tblSum"
-                                       Text="{Binding TotalPrice}"
-                                       FontSize="24"
-                                       Width="99"
-                                       FontFamily="Arial"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Right"
-                                       TextAlignment="Right" />
+                    <StackPanel Margin="8">
+                        <StackPanel Orientation="Horizontal" Margin="8,8,8,8">
+                            <TextBlock Text="Tổng:" FontSize="18" FontWeight="Bold" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0"/>
+                            <TextBlock x:Name="tblSum" Text="{Binding TotalPrice}" FontSize="24" Width="99" FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" />
 
 
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="8">
-                            <TextBlock
-                                TextAlignment="Center"
-                           FontFamily="Arial"
-                           FontSize="16"
-                           Text="Xóa"
-                           FontWeight="Bold"
-                           ToolTip="Xóa tất cả"
-                                Margin="4"
-                           Cursor="Hand" Width="64" VerticalAlignment="Center">
+                            <TextBlock TextAlignment="Center" FontFamily="Arial" FontSize="16" Text="Xóa" FontWeight="Bold" ToolTip="Xóa tất cả" Margin="4" Cursor="Hand" Width="64" VerticalAlignment="Center">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground"
-                                    Value="OrangeRed" />
+                                        <Setter Property="Foreground" Value="OrangeRed" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                                <Setter Property="Foreground"
-                                            Value="LightGray" />
-                                                <Setter Property="TextDecorations"
-                                            Value="Underline" />
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="LightGray" />
+                                                <Setter Property="TextDecorations" Value="Underline" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
                                 </TextBlock.Style>
                                 <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding DeleteAllOrderCommand}"
-                                      MouseAction="LeftClick" />
+                                    <MouseBinding Command="{Binding DeleteAllOrderCommand}" MouseAction="LeftClick" />
                                 </TextBlock.InputBindings>
                             </TextBlock>
-                            <Button Command="{Binding BuyCommand}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            materialDesign:ButtonAssist.CornerRadius="8"
-                            Content="Xác nhận"
-                                    Height="56"
-                            FontSize="25" Margin="4">
+                            <Button Command="{Binding BuyCommand}" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="8" Content="Xác nhận">
                             </Button>
                         </StackPanel>
-                    </StackPanel>                    
+                    </StackPanel>
                 </Grid>
             </Grid>
 
         </Grid>
 
-        <ProgressBar Height="100"
-                     Width="100"
-                     IsIndeterminate="{Binding IsLoading}"
-                     Margin="0,0,350,0"
-                     Grid.Row="1">
+        <ProgressBar Height="100" Width="100" IsIndeterminate="{Binding IsLoading}" Margin="0,0,350,0" Grid.Row="1">
             <ProgressBar.Style>
-                <Style TargetType="ProgressBar"
-                       BasedOn="{StaticResource MaterialDesignCircularProgressBar}">
-                    <Setter Property="Visibility"
-                            Value="Visible" />
+                <Style TargetType="ProgressBar" BasedOn="{StaticResource MaterialDesignCircularProgressBar}">
+                    <Setter Property="Visibility" Value="Visible" />
                     <Style.Triggers>
-                        <Trigger Property="IsIndeterminate"
-                                 Value="False">
-                            <Setter Property="Visibility"
-                                    Value="Collapsed" />
+                        <Trigger Property="IsIndeterminate" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>

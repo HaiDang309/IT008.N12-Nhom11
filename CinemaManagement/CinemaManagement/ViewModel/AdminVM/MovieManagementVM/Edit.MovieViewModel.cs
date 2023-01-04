@@ -66,7 +66,7 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
 
                     if (movie.Image is null)
                     {
-                        MessageBoxCustom mb = new MessageBoxCustom("Thông báo", "Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", MessageType.Error, MessageButtons.OK);
+                        new MessageBoxCustom("Thông báo", "Lưu ảnh thất bại. Vui lòng thử lại", MessageType.Error, MessageButtons.OK);
                         return;
                     }
                 }
@@ -80,23 +80,22 @@ namespace CinemaManagement.ViewModel.AdminVM.MovieManagementVM
                 if (successUpdateMovie)
                 {
                     isSaving = false;
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromUpdateMovie, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Thông báo", messageFromUpdateMovie, MessageType.Success, MessageButtons.OK);
+
                     LoadMovieListView(Operation.UPDATE, movie);
 
-                    MaskName.Visibility = Visibility.Collapsed;
                     p.Close();
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdateMovie, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", messageFromUpdateMovie, MessageType.Error, MessageButtons.OK);
+
                 }
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đủ thông tin!", MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đủ thông tin!", MessageType.Warning, MessageButtons.OK);
+
             }
         }
 

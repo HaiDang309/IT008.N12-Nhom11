@@ -40,7 +40,7 @@ namespace CinemaManagement.Utils
                 var uploadParams = new ImageUploadParams()
                 {
                     File = new FileDescription(filePath.ToString()),
-                    Folder = "CinemaManagementAssets"
+                    Folder = "TCAssets"
                 };
                 var uploadResult = await cloudinary.UploadAsync(uploadParams);
 
@@ -102,9 +102,9 @@ namespace CinemaManagement.Utils
         }
         private string GetPublicIdFromURL(string url)
         {
-            string strStart = "squadinImages";
+            string strStart = "TCImages";
             string strEnd = ".";
-            if (url.Contains("squadinImages") && url.Contains("."))
+            if (url.Contains("TCImages") && url.Contains("."))
             {
                 int Start, End;
                 Start = url.IndexOf(strStart, 0);

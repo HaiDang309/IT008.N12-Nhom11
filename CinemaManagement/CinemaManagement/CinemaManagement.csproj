@@ -339,9 +339,6 @@
     <Compile Include="Utils\RegexUtilities.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
     <Compile Include="ViewModel\AdminVM\CustomerManagementVM\CustomerManagementViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\ErrorVM\ErrorViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\ErrorVM\HintLevelConverter.cs" />
-    <Compile Include="ViewModel\AdminVM\ErrorVM\StatusBrushConverter.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\AddFoodViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\EditFoodViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementViewModel.cs" />
@@ -365,11 +362,6 @@
     <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\IndexConverter.cs" />
     <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Ranking.cs" />
     <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\StatisticalManagementViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverter.cs" />
-    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\Infor_EditWindowVM\Infor_EditViewModel.cs" />
-    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\VoucherViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginVM\ForgotPassViewModel.cs" />
     <Compile Include="ViewModel\LoginVM\LoginViewModel.cs" />
@@ -390,18 +382,6 @@
     </Compile>
     <Compile Include="Views\Admin\CustomerManagement\EditCustomer.xaml.cs">
       <DependentUpon>EditCustomer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\ErrorManagement\DoneError.xaml.cs">
-      <DependentUpon>DoneError.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\ErrorManagement\ErrorManagement.xaml.cs">
-      <DependentUpon>ErrorManagement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\ErrorManagement\InprogressError.xaml.cs">
-      <DependentUpon>InprogressError.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\ErrorManagement\WaitingError.xaml.cs">
-      <DependentUpon>WaitingError.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\FoodManagementPage\AddFoodWindow.xaml.cs">
       <DependentUpon>AddFoodWindow.xaml</DependentUpon>
@@ -481,33 +461,6 @@
     <Compile Include="Views\Admin\StatisticalManagement\StatisticalManagement.xaml.cs">
       <DependentUpon>StatisticalManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddInfor.xaml.cs">
-      <DependentUpon>AddInfor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddListMiniVoucher.xaml.cs">
-      <DependentUpon>AddListMiniVoucher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddMiniVoucher.xaml.cs">
-      <DependentUpon>AddMiniVoucher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddVoucher.xaml.cs">
-      <DependentUpon>AddVoucher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\AddWindow.xaml.cs">
-      <DependentUpon>AddWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml.cs">
-      <DependentUpon>ReleaseVoucher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\Infor_EditWindow\Edit_InforPage.xaml.cs">
-      <DependentUpon>Edit_InforPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\Infor_EditWindow\Infor_EditWindow.xaml.cs">
-      <DependentUpon>Infor_EditWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\VoucherManagement\VoucherManagement.xaml.cs">
-      <DependentUpon>VoucherManagement.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\LoginWindow\ChangePassPage.xaml.cs">
       <DependentUpon>ChangePassPage.xaml</DependentUpon>
     </Compile>
@@ -584,22 +537,6 @@
     <Page Include="Views\Admin\CustomerManagement\EditCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\ErrorManagement\DoneError.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Admin\ErrorManagement\ErrorManagement.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Admin\ErrorManagement\InprogressError.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Admin\ErrorManagement\WaitingError.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Admin\FoodManagementPage\AddFoodWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -702,42 +639,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\StatisticalManagement\StatisticalManagement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddInfor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddListMiniVoucher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddMiniVoucher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddVoucher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\AddWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\Infor_EditWindow\Edit_InforPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\Infor_EditWindow\Infor_EditWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\VoucherManagement\VoucherManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

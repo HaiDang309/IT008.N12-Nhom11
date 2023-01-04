@@ -28,10 +28,10 @@
                     <Button Height="56" Content="Tổng thu chi" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadAllStatisticalCM}" CommandParameter="{Binding ElementName=card1}" />
                 </materialDesign:Card>
                 <materialDesign:Card Height="57" Background="#f0f2f5" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom" BorderThickness="0" x:Name="card2">
-                    <Button Height="57" Content="Bảng xếp hạng" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadRankStatisticalCM}" CommandParameter="{Binding ElementName=card2}" />
+                    <Button Height="57" Content="Bảng xếp hạng" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadRankStatisticalCM}" CommandParameter="{Binding ElementName=card2}" Click="Button_Click" />
                 </materialDesign:Card>
                 <materialDesign:Card Height="57" Background="#f0f2f5" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom" BorderThickness="0" x:Name="card3">
-                    <Button Height="57" Content="Xu hướng" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadBestSellingCM}" CommandParameter="{Binding ElementName=card3}" />
+                    <Button Height="57" Content="Sản phẩm bán chạy" Background="Transparent" Foreground="Black" BorderBrush="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="0" Command="{Binding LoadBestSellingCM}" CommandParameter="{Binding ElementName=card3}" Click="Button_Click_1" />
                 </materialDesign:Card>
 
             </StackPanel>

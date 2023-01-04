@@ -87,8 +87,8 @@ namespace CinemaManagement.ViewModel
             });
             ForgotPassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-
-                MainFrame.Content = new ForgotPassPage();
+                MessageBox.Show("Vui lòng liên hệ ADMIN (19521315@gm.uit.edu.vn) để cấp lại mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                // MainFrame.Content = new ForgotPassPage();
             });
             LoginCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
              {
@@ -168,7 +168,7 @@ namespace CinemaManagement.ViewModel
             {
                 Password = "";
                 TicketBillViewModel.Staff = staff;
-                if (staff.Role == "Quản lý")
+                /* if (staff.Role == "Quản lý")
                 {
 
                     MainFrame.Content = new RolePage();
@@ -179,6 +179,27 @@ namespace CinemaManagement.ViewModel
                     MainStaffWindow w1 = new MainStaffWindow();
                     MainStaffViewModel.CurrentStaff = staff;
                     w1._StaffName.Text = staff.Name;
+                    w1.Show();
+                    LoginWindow.Close();
+                    return;
+                } */
+
+                if (staff.Role == "Quản lý")
+                {
+                    LoginWindow.Hide();
+                    MainAdminWindow w1 = new MainAdminWindow();
+                    MainAdminViewModel.currentStaff = CurrentStaff;
+                    w1.CurrentUserName.Content = CurrentStaff.Name;
+                    w1.Show();
+                    LoginWindow.Close();
+                    return;
+                }
+                else
+                {
+                    LoginWindow.Hide();
+                    MainStaffWindow w1 = new MainStaffWindow();
+                    MainStaffViewModel.CurrentStaff = CurrentStaff;
+                    w1._StaffName.Text = CurrentStaff.Name;
                     w1.Show();
                     LoginWindow.Close();
                     return;

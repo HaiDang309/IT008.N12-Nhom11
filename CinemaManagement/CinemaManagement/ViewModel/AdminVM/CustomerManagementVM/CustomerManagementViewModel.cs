@@ -133,8 +133,7 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
 
             DeleteCustomerCommand = new RelayCommand<Window>((p) => { return true; }, async (p) =>
                  {
-                     MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", "Bạn có chắc muốn xoá khách hàng này không?", MessageType.Warning, MessageButtons.YesNo);
-                     result.ShowDialog();
+                     MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", "Xoá khách hàng này?", MessageType.Warning, MessageButtons.YesNo);
 
                      if (result.DialogResult == true)
                      {
@@ -148,12 +147,12 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
                          {
                              LoadCustomerListView(Utils.Operation.DELETE);
                              MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromUpdate, MessageType.Success, MessageButtons.OK);
-                             mb.ShowDialog();
+
                          }
                          else
                          {
                              MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdate, MessageType.Error, MessageButtons.OK);
-                             mb.ShowDialog();
+
                          }
                      }
                  });
@@ -165,7 +164,6 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
                 Fullname = SelectedItem.Name;
                 Phone = SelectedItem.PhoneNumber.ToString();
                 Mail = SelectedItem.Email;
-                MaskName.Visibility = Visibility.Visible;
                 wd.ShowDialog();
             });
             CloseCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
@@ -173,7 +171,6 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
 
                 if (p != null)
                 {
-                    MaskName.Visibility = Visibility.Collapsed;
                     p.Close();
                 }
             });
@@ -253,7 +250,7 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
                 if (!Utils.RegexUtilities.IsValidEmail(Mail))
                 {
                     MessageBoxCustom mb = new MessageBoxCustom("", "Email không hợp lệ", MessageType.Warning, MessageButtons.OK);
-                    mb.ShowDialog();
+
                     return;
                 }
             }
@@ -272,22 +269,21 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
 
                 if (isSuccess)
                 {
-                    MaskName.Visibility = Visibility.Collapsed;
                     LoadCustomerListView(Utils.Operation.UPDATE, cus);
                     p.Close();
                     MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromUpdate, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+
                 }
                 else
                 {
                     MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdate, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+
                 }
             }
             else
             {
                 MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", error, MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+
             }
         }
 
@@ -317,13 +313,13 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
             {
                 Console.WriteLine(e);
                 MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+
             }
             selectedyear = int.Parse(SelectedTime.ToString());
 
@@ -341,13 +337,13 @@ namespace CinemaManagement.ViewModel.AdminVM.CustomerManagementVM
             {
                 Console.WriteLine(e);
                 MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+
             }
         }
     }

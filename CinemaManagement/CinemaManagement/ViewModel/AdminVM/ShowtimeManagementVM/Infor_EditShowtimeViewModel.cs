@@ -88,7 +88,6 @@ namespace CinemaManagement.ViewModel.AdminVM.ShowtimeManagementViewModel
                 LoadDataEditWindow(p);
                 EditShowtimeWindow = p;
                 oldSelectedItem = SelectedItem;
-                ShadowMask.Visibility = System.Windows.Visibility.Visible;
                 ListSeat1 = new ObservableCollection<SeatSettingDTO>();
                 ListSeat2 = new ObservableCollection<SeatSettingDTO>();
                 IsFree = IsBought = 0;
@@ -118,15 +117,15 @@ namespace CinemaManagement.ViewModel.AdminVM.ShowtimeManagementViewModel
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                 throw;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                 throw;
             }
 

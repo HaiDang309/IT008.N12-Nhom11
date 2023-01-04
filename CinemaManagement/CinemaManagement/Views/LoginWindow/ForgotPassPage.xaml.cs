@@ -78,8 +78,8 @@ namespace CinemaManagement.Views.LoginWindow
         {
             if (string.IsNullOrEmpty(codefield.Password))
             {
-                MessageBoxCustom mb = new MessageBoxCustom("", "Không hợp lệ!", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("", "Không hợp lệ!", MessageType.Error, MessageButtons.OK);
+
             }
         }
 

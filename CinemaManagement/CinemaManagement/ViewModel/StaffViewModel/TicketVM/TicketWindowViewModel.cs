@@ -63,7 +63,7 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketVM
                     foreach (var st in ListStatusSeat)
                         if (p.Content.ToString() == st.SeatPosition)
                         {
-                            new MessageBoxCustom("Lỗi", "Ghế này đã bán vui lòng chọn ghế khác!", MessageType.Error, MessageButtons.OK).ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Ghế đã đặt! Vui lòng chọn ghế khác!", MessageType.Error, MessageButtons.OK);
                             return;
                         }
                     if (IsExist(p.Content.ToString()))
@@ -73,9 +73,9 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketVM
                         WaitingSeatList(p);
                         return;
                     }
-                    if(WaitingList.Count + 1 > 7)
+                    if (WaitingList.Count + 1 > 7)
                     {
-                        new MessageBoxCustom("Lỗi", "Bạn chỉ được đặt tối đa 7 ghế!", MessageType.Error, MessageButtons.OK).ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Bạn chỉ được đặt tối đa 7 ghế!", MessageType.Error, MessageButtons.OK);
                         return;
                     }
                     p.Background = new SolidColorBrush(Colors.Green);
@@ -94,7 +94,8 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketVM
                     {
                         if (item.SeatPosition == p.Content.ToString() && item.Status == true)
                         {
-                            p.Background = new SolidColorBrush(Colors.Brown);
+                            p.Background = new SolidColorBrush(Colors.Red);
+                            p.BorderBrush = new SolidColorBrush(Colors.Red);
                             p.Foreground = new SolidColorBrush(Colors.White);
                             return;
                         }
@@ -109,9 +110,9 @@ namespace CinemaManagement.ViewModel.StaffViewModel.TicketVM
             });
             LoadFoodPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                if(WaitingList.Count == 0)
+                if (WaitingList.Count == 0)
                 {
-                    new MessageBoxCustom("Cảnh báo", "Vui lòng chọn ghế trước khi sang bước tiếp theo", MessageType.Warning, MessageButtons.OK).ShowDialog();
+                    new MessageBoxCustom("Cảnh báo", "Vui lòng chọn ghế!", MessageType.Warning, MessageButtons.OK);
                     return;
                 }
                 if (OrderFoodPageViewModel.ListOrder != null)

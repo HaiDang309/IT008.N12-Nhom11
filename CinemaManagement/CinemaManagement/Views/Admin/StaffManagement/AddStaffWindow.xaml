@@ -17,92 +17,71 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource StaffManagementVM}"
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True"
-        Background="Transparent"
-        WindowStyle="None"
-        ResizeMode="NoResize"
+        Background="#fff"
+        WindowStyle="ThreeDBorderWindow"
         MouseLeftButtonDown="ThemNV_MouseLeftButtonDown"
         Name="ThemNV">
 
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="ThemNV"
-                                     Storyboard.TargetProperty="Opacity"
-                                     From="0"
-                                     To="1"
-                                     Duration="0:0:0.3" />
-
-
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid>
-        <Border BorderThickness="1"
-                CornerRadius="8"
-                BorderBrush="Gray"
-                Background="White">
-            <materialDesign:Card Background="Transparent">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="44*" />
-                        <RowDefinition Height="45" />
-                        <RowDefinition Height="45" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="44*" />
-                        <RowDefinition Height="44*" />
-                        <RowDefinition Height="44*" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="44*" />
-                        <RowDefinition Height="90*" />
-                    </Grid.RowDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment"
+        <materialDesign:Card Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="44*" />
+                    <RowDefinition Height="90*" />
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment"
                                     Value="Center" />
-                            <Setter Property="HorizontalAlignment"
+                        <Setter Property="HorizontalAlignment"
                                     Value="Right" />
-                            <Setter Property="Margin"
+                        <Setter Property="Margin"
                                     Value="0 10 10 0" />
-                            <Setter Property="FontSize"
+                        <Setter Property="FontSize"
                                     Value="15" />
-                        </Style>
-                        <Style TargetType="TextBox"
+                    </Style>
+                    <Style TargetType="TextBox"
                                BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
-                            <Setter Property="Margin"
+                        <Setter Property="Margin"
                                     Value="5 0 40 0" />
-                            <Setter Property="VerticalAlignment"
+                        <Setter Property="VerticalAlignment"
                                     Value="Center" />
-                            <Setter Property="Padding"
+                        <Setter Property="Padding"
                                     Value="0 0 20 0" />
-                            <Setter Property="VerticalContentAlignment"
+                        <Setter Property="VerticalContentAlignment"
                                     Value="Center" />
-                            <Setter Property="Height"
+                        <Setter Property="Height"
                                     Value="40" />
-                        </Style>
-                    </Grid.Resources>
-                    <Grid Grid.Row="0">
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
 
-                        <Border BorderThickness="0,0,0,1"
-                                BorderBrush="Black">
-                            <TextBlock VerticalAlignment="Center"
+                    <Border BorderThickness="0,0,0,1"
+                                BorderBrush="#ccc">
+                        <TextBlock VerticalAlignment="Center"
                                        Margin="20 0 0 0"
                                        Text="THÊM NHÂN VIÊN"
                                        FontWeight="DemiBold"
                                        FontSize="20"
                                        HorizontalAlignment="Left"
                                        Foreground="Black" />
-                        </Border>
+                    </Border>
 
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <TextBlock Text="Thông tin cơ bản"
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Thông tin cơ bản"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    FontWeight="Bold"
@@ -112,115 +91,108 @@
                                    FontFamily="Google Sans"
                                    Padding="0 5 400 0"
                                    FontSize="17" />
-                    </Grid>
-                    <!--#region Thông tin-->
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Họ và tên"
+                </Grid>
+                <!--#region Thông tin-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Họ và tên"
                                    x:Name="tboxName" />
-                        <TextBox Grid.Column="1"
+                    <TextBox Grid.Column="1"
                                  x:Name="_FullName"
                                  Text="{Binding Fullname, Mode=TwoWay}" />
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Giới tính" />
-                        <ComboBox VerticalContentAlignment="Center"
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Giới tính" />
+                    <ComboBox VerticalContentAlignment="Center"
                                   Padding="0 12 0 0"
                                   Margin="5 0 40 0"
                                   Grid.Column="1"
                                   Height="40"
                                   x:Name="_Gender"
                                   SelectedItem="{Binding Gender, Mode=TwoWay}">
-                            <ComboBoxItem Content="Nam" />
-                            <ComboBoxItem Content="Nữ" />
-                        </ComboBox>
-                    </Grid>
+                        <ComboBoxItem Content="Nam" />
+                        <ComboBoxItem Content="Nữ" />
+                    </ComboBox>
+                </Grid>
 
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Ngày sinh" />
-                        <DatePicker Margin="5 0 40 0"
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ngày sinh" />
+                    <DatePicker Margin="5 0 40 0"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="1"
                                     x:Name="_Born"
                                     SelectedDate="{Binding Born, Mode=TwoWay}" />
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Row="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal"
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right">
-                            <TextBlock Text="Email" />
-                            <materialDesign:PackIcon Kind="InfoCircle"
-                                                     Cursor="Hand"
-                                                     Height="15"
-                                                     VerticalAlignment="Center"
-                                                     Width="15"
-                                                     Margin="-10,8,10,0"
-                                                     ToolTip="Không bắt buộc" />
-                        </StackPanel>
-                        <TextBox Grid.Column="1"
+                        <TextBlock Text="Email" />
+                    </StackPanel>
+                    <TextBox Grid.Column="1"
                                  x:Name="_Mail"
                                  Text="{Binding Mail, Mode=TwoWay}" />
-                    </Grid>
-                    <Grid Grid.Row="6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Số điện thoại" />
-                        <TextBox Grid.Column="1"
+                </Grid>
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Số điện thoại" />
+                    <TextBox Grid.Column="1"
                                  x:Name="_Phone"
                                  PreviewTextInput="_Phone_PreviewTextInput"
                                  Text="{Binding Phone, Mode=TwoWay}" />
-                    </Grid>
-                    <Grid Grid.Row="7">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Chức vụ" />
-                        <ComboBox VerticalContentAlignment="Center"
+                </Grid>
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Chức vụ" />
+                    <ComboBox VerticalContentAlignment="Center"
                                   Padding="0 12 0 0"
                                   Margin="5 0 40 0"
                                   Grid.Column="1"
                                   x:Name="_Role"
                                   SelectedItem="{Binding Role, Mode=TwoWay}">
-                            <ComboBoxItem Content="Quản lý" />
-                            <ComboBoxItem Content="Nhân viên" />
-                        </ComboBox>
-                    </Grid>
+                        <ComboBoxItem Content="Quản lý" />
+                        <ComboBoxItem Content="Nhân viên" />
+                    </ComboBox>
+                </Grid>
 
-                    <Grid Grid.Row="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Ngày bắt đầu" />
-                        <DatePicker Margin="5 0 40 0"
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ngày vào làm" />
+                    <DatePicker Margin="5 0 40 0"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="1"
                                     x:Name="_StartDate"
                                     SelectedDate="{Binding StartDate,Mode=TwoWay}" />
-                    </Grid>
-                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
 
-                    <Grid Grid.Row="9">
-                        <TextBlock Text="Tài khoản đăng nhập"
+                <Grid Grid.Row="9">
+                    <TextBlock Text="Tài khoản đăng nhập"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    Height="30"
@@ -230,91 +202,82 @@
                                    FontFamily="Google Sans"
                                    Padding="0 5 400 0"
                                    FontSize="17" />
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Row="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Tài khoản" />
-                        <TextBox Grid.Column="1"
+                <Grid Grid.Row="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Tài khoản" />
+                    <TextBox Grid.Column="1"
                                  x:Name="_TaiKhoan"
                                  Text="{Binding TaiKhoan, Mode=TwoWay}" />
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Row="11">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Mật khẩu" />
-                        <PasswordBox Grid.Column="1"
+                <Grid Grid.Row="11">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Mật khẩu" />
+                    <PasswordBox Grid.Column="1"
                                      materialDesign:TextFieldAssist.HasClearButton="True"
                                      Margin="5 0 40 0"
                                      Padding="0 12 0 0"
                                      VerticalContentAlignment="Center"
                                      x:Name="_MatKhau">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding GetPasswordCommand, Mode=TwoWay}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding GetPasswordCommand, Mode=TwoWay}"
                                                            CommandParameter="{Binding ElementName=_MatKhau}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </PasswordBox>
-                    </Grid>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </Grid>
 
-                    <Grid Grid.Row="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Nhập lại" />
-                        <PasswordBox Grid.Column="1"
+                <Grid Grid.Row="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Nhập lại mật khẩu" />
+                    <PasswordBox Grid.Column="1"
                                      materialDesign:TextFieldAssist.HasClearButton="True"
                                      Margin="5 0 40 0"
                                      Padding="0 12 0 0"
                                      VerticalContentAlignment="Center"
                                      x:Name="_RePass">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding GetRePasswordCommand}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding GetRePasswordCommand}"
                                                            CommandParameter="{Binding ElementName=_RePass}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </PasswordBox>
-                    </Grid>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </Grid>
 
-                    <Grid Grid.Row="13">
-                        <Grid.Resources>
-                            <Style TargetType="Button"
+                <Grid Grid.Row="13">
+                    <Grid.Resources>
+                        <Style TargetType="Button"
                                    BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
-                                <Setter Property="VerticalAlignment"
+                            <Setter Property="VerticalAlignment"
                                         Value="Bottom" />
-                                <Setter Property="HorizontalAlignment"
+                            <Setter Property="HorizontalAlignment"
                                         Value="Right" />
-                                <Setter Property="Width"
+                            <Setter Property="Width"
                                         Value="90" />
-                                <Setter Property="Height"
+                            <Setter Property="Height"
                                         Value="30" />
-                            </Style>
-                        </Grid.Resources>
-                        <Button Content="Hủy"
-                                Margin="0 0 150 15"
-                                Command="{Binding CloseCommand}"
-                                CommandParameter="{Binding ElementName=ThemNV}"
-                                Background="OrangeRed"
-                                BorderBrush="Transparent"
-                                materialDesign:ButtonAssist.CornerRadius="8" />
-                        <Button Content="Hoàn tất"
+                        </Style>
+                    </Grid.Resources>
+                    <Button Content="Thêm"
                                 Margin="0 0 40 15"
                                 Command="{Binding AddStaffCommand}"
-                                CommandParameter="{Binding ElementName=ThemNV}"
-                                materialDesign:ButtonAssist.CornerRadius="8" />
+                                CommandParameter="{Binding ElementName=ThemNV}" />
 
-                    </Grid>
                 </Grid>
-            </materialDesign:Card>
-        </Border>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </Window>

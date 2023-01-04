@@ -10,5 +10,15 @@ namespace CinemaManagement.Views.Admin.StatisticalManagement
             InitializeComponent();
             this.Language = XmlLanguage.GetLanguage("vi-VN");
         }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

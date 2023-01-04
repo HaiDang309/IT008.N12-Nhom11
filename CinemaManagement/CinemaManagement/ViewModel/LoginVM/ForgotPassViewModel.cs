@@ -79,8 +79,8 @@ namespace CinemaManagement.ViewModel
                     }
                     else
                     {
-                        MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mã bảo mật sai", MessageType.Error, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Mã bảo mật sai", MessageType.Error, MessageButtons.OK);
+
                         return;
                     }
                 }
@@ -125,10 +125,10 @@ namespace CinemaManagement.ViewModel
                  {
                      await SendEmailForStaff(ForgotPasswordEmail, RandomCode);
                  }
-                 catch(Exception)
+                 catch (Exception)
                  {
-                     MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                     mb.ShowDialog();
+                     new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                  }
              });
             SaveNewPassCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
@@ -146,14 +146,14 @@ namespace CinemaManagement.ViewModel
                      if (updatedSuccess)
                      {
                          p.Content = "";
-                         MessageBoxCustom mb = new MessageBoxCustom("Thông báo", "Đổi mật khẩu thành công!", MessageType.Success, MessageButtons.OK);
-                         mb.ShowDialog();
+                         new MessageBoxCustom("Thông báo", "Đổi mật khẩu thành công!", MessageType.Success, MessageButtons.OK);
+
                          LoginViewModel.MainFrame.Content = new LoginPage();
                      }
                      else
                      {
-                         MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromUpdate, MessageType.Error, MessageButtons.OK);
-                         mb.ShowDialog();
+                         new MessageBoxCustom("Lỗi", messageFromUpdate, MessageType.Error, MessageButtons.OK);
+
                          return;
                      }
                  }
@@ -190,7 +190,7 @@ namespace CinemaManagement.ViewModel
             //Add view to the Email Message
             mail.AlternateViews.Add(htmlView);
 
-            mail.From = new MailAddress(APP_EMAIL, "Squadin Cinema");
+            mail.From = new MailAddress(APP_EMAIL, "Tiny Cinema");
             mail.To.Add(customerEmail);
             mail.Subject = "Lấy lại mật khẩu đăng nhập";
 

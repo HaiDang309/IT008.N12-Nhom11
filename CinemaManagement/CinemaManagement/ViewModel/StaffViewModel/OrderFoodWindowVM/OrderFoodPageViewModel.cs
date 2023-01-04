@@ -255,7 +255,6 @@ namespace CinemaManagement.ViewModel.StaffViewModel.OrderFoodWindowVM
                 if (OrderList.Count == 0)
                 {
                     mgb = new MessageBoxCustom("Lỗi", "Danh sách không có sản phẩm nào!", MessageType.Error, MessageButtons.OK);
-                    mgb.ShowDialog();
                 }
                 else
                 {
@@ -511,14 +510,14 @@ namespace CinemaManagement.ViewModel.StaffViewModel.OrderFoodWindowVM
             }
             catch (System.Data.Entity.Core.EntityException)
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                 throw;
             }
             catch (Exception)
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                 throw;
             }
         }

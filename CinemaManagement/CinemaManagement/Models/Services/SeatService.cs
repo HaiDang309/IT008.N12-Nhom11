@@ -56,5 +56,31 @@ namespace CinemaManagement.Models.Services
                 throw e;
             }
         }
+
+        public async Task<List<SeatDTO>> GetSeatsByRoom(int roomId)
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    var seatList = await (from s in context.Seats
+                                          where s.RoomId == roomId
+                                          select new SeatDTO
+                                          {
+                                              Id = s.Id,
+                                              RoomId = s.RoomId,
+                                              Row = s.Row,
+                                              SeatNumber = s.SeatNumber,
+                                          }
+                               ).ToListAsync();
+                    return seatList;
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

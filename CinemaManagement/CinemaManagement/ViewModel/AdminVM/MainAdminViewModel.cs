@@ -1,6 +1,5 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.Services;
-using CinemaManagement.Views.Admin.ErrorManagement;
 using CinemaManagement.Views.Admin.FoodManagementPage;
 using CinemaManagement.Views.Admin.Import_ExportManagement;
 using CinemaManagement.Views.Admin.MovieManagement;
@@ -10,7 +9,6 @@ using CinemaManagement.Views.Admin.StatisticalManagement;
 using CinemaManagement.Views.LoginWindow;
 using System;
 using System.Collections.Generic;
-using CinemaManagement.Views.Admin.VoucherManagement;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -135,8 +133,7 @@ namespace CinemaManagement.ViewModel
                 if (MainAdminWindow.Slidebtn != null)
                     MainAdminWindow.Slidebtn.IsChecked = false;
                 SelectedFuncName = "Sự cố";
-                if (p != null)
-                    p.Content = new ErrorManagement();
+                
 
             });
             LoadVCPageCM = new RelayCommand<Frame>((p) => { return p != null; }, (p) =>
@@ -144,8 +141,7 @@ namespace CinemaManagement.ViewModel
                 if (MainAdminWindow.Slidebtn != null)
                     MainAdminWindow.Slidebtn.IsChecked = false;
                 SelectedFuncName = "Voucher";
-                if (p != null)
-                    p.Content = new VoucherManagement();
+                
 
             });
             ChangeRoleCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -159,35 +155,7 @@ namespace CinemaManagement.ViewModel
             });
 
 
-            // this is  the ErrorViewmodel resources
-            LoadDetailErrorCM = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                ChoseWindow();
-            });
-            UpdateErrorCM = new RelayCommand<Window>((p) => { if (IsSaving) return false; return true; }, async (p) =>
-             {
-                 if (SelectedStatus is null)
-                 {
-                     MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Không hợp lệ!", MessageType.Warning, MessageButtons.OK);
-                     mb.ShowDialog();
-                     return;
-                 }
-                 IsSaving = true;
-                 await UpdateErrorFunc(p);
-                 IsSaving = false;
-             });
-            ReloadErrorListCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-             {
-                 ListError = new System.Collections.ObjectModel.ObservableCollection<TroubleDTO>();
-                 IsGettingSource = true;
-
-                 await ReloadErrorList();
-
-                 IsGettingSource = false;
-             });
-            SelectedDate = DateTime.Today;
-            SelectedFinishDate = DateTime.Today;
-
+           
             //======================================
 
 

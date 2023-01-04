@@ -59,229 +59,202 @@
             </StackPanel>
 
             <!---MAIN-->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="70*" />
-                </Grid.ColumnDefinitions>
-                <!---Left-->
-                <Grid Grid.Column="0" Margin="8,8,16,8">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30*" />
-                        <RowDefinition Height="30*" />
-                        <RowDefinition Height="40*" />
-                    </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Margin="8,8,16,8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="40*" />
+                </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <materialDesign:Card Margin="4">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Thu:" FontWeight="Bold" FontSize="14" />
-                                    <TextBox Text="{Binding ReveRate}" BorderThickness="0" IsHitTestVisible="False" FontStyle="Italic" FontSize="15" TextChanged="TextBox_TextChanged" />
-                                    <!--Tăng 🠕-->
-                                </StackPanel>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0" Margin="5,0,0,0">
-                                        <Label Content="Vé" FontSize="14" />
-                                        <Label Content="{Binding TicketPc}" FontSize="18" FontWeight="Bold" />
-                                        <Label Content="{Binding TicketReve}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                        <Label Content="Sản phẩm" FontSize="14" />
-                                        <Label Content="{Binding ProductPc}" FontWeight="Bold" FontSize="18" />
-                                        <Label Content="{Binding ProductReve}" />
-                                    </StackPanel>
-                                </Grid>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <materialDesign:Card Margin="4">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Thu:" FontWeight="Bold" FontSize="14" />
+                                <TextBox Text="{Binding ReveRate}" BorderThickness="0" IsHitTestVisible="False" FontStyle="Italic" FontSize="15" TextChanged="TextBox_TextChanged" />
+                                <!--Tăng 🠕-->
                             </StackPanel>
-                        </materialDesign:Card>
-
-                        <materialDesign:Card Margin="4">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Chi:" FontWeight="Bold" FontSize="14" />
-                                    <TextBox Text="{Binding ExpeRate}" FontStyle="Italic" FontSize="15" IsHitTestVisible="False" BorderThickness="0" TextChanged="TextBox_TextChanged_1" />
-                                </StackPanel>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0">
-                                        <Label Content="Sản phẩm" FontSize="14" />
-                                        <Label Content="{Binding ProductExPc}" FontSize="18" FontWeight="Bold" />
-                                        <Label Content="{Binding ProductExpe}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                        <Label Content="Sửa chữa" FontSize="14" />
-                                        <Label Content="{Binding RepairPc}" FontWeight="Bold" FontSize="18" />
-                                        <Label Content="{Binding RepairExpe}" />
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="1" Margin="4">
-                        <materialDesign:Card  UniformCornerRadius="5">
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="25*" />
-                                    <RowDefinition Height="75*" />
-                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                                <Label Content="Tổng thu chi (VND)" FontSize="14" FontWeight="Bold" Margin="4" Grid.Row="0" VerticalAlignment="Center" />
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="70*" />
-                                        <ColumnDefinition Width="30*" />
-                                    </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="5,0,0,0">
+                                    <Label Content="Vé" FontSize="14" />
+                                    <Label Content="{Binding TicketPc}" FontSize="18" FontWeight="Bold" />
+                                    <Label Content="{Binding TicketReve}" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                    <Label Content="Sản phẩm" FontSize="14" />
+                                    <Label Content="{Binding ProductPc}" FontWeight="Bold" FontSize="18" />
+                                    <Label Content="{Binding ProductReve}" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
 
-                                    <StackPanel Grid.Column="0">
+                    <materialDesign:Card Margin="4">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Chi:" FontWeight="Bold" FontSize="14" />
+                                <TextBox Text="{Binding ExpeRate}" FontStyle="Italic" FontSize="15" IsHitTestVisible="False" BorderThickness="0" TextChanged="TextBox_TextChanged_1" />
+                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                                        <!---BAR 1-->
-                                        <StackPanel Margin="4">
-                                            <Label Content="Thu" FontWeight="Bold" />
-                                            <StackPanel Width="256" HorizontalAlignment="Left" Margin="4">
-                                                <ProgressBar BorderBrush="Transparent" Height="12" x:Name="pb1" Value="{Binding TotalInPc}">
-                                                    <ProgressBar.Style>
-                                                        <Style TargetType="{x:Type ProgressBar}">
-                                                            <Setter Property="Template">
-                                                                <Setter.Value>
-                                                                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                                        <Grid MinHeight="12" MinWidth="128">
-                                                                            <Border Name="PART_Track" CornerRadius="8" />
-                                                                            <Border Name="PART_Indicator" CornerRadius="8" BorderThickness="1" Background="#0c70b6" HorizontalAlignment="Left" />
-                                                                        </Grid>
-                                                                    </ControlTemplate>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </Style>
-                                                    </ProgressBar.Style>
-                                                    <ProgressBar.Triggers>
-                                                        <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <ThicknessAnimation Storyboard.TargetName="pb1" Storyboard.TargetProperty="Margin" From="0 0 250 0" To="0 0 0 0" Duration="0:0:0.5" />
+                                <StackPanel Grid.Column="0">
+                                    <Label Content="Sản phẩm" FontSize="14" />
+                                    <Label Content="{Binding ProductExPc}" FontSize="18" FontWeight="Bold" />
+                                    <Label Content="{Binding ProductExpe}" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                    <Label Content="Sửa chữa" FontSize="14" />
+                                    <Label Content="{Binding RepairPc}" FontWeight="Bold" FontSize="18" />
+                                    <Label Content="{Binding RepairExpe}" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="4">
+                    <materialDesign:Card  UniformCornerRadius="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25*" />
+                                <RowDefinition Height="75*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Tổng thu chi (VND)" FontSize="14" FontWeight="Bold" Margin="4" Grid.Row="0" VerticalAlignment="Center" />
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+
+                                    <!---BAR 1-->
+                                    <StackPanel Margin="4">
+                                        <Label Content="Thu" FontWeight="Bold" />
+                                        <StackPanel Width="256" HorizontalAlignment="Left" Margin="4">
+                                            <ProgressBar BorderBrush="Transparent" Height="12" x:Name="pb1" Value="{Binding TotalInPc}">
+                                                <ProgressBar.Style>
+                                                    <Style TargetType="{x:Type ProgressBar}">
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                                                    <Grid MinHeight="12" MinWidth="128">
+                                                                        <Border Name="PART_Track" CornerRadius="8" />
+                                                                        <Border Name="PART_Indicator" CornerRadius="8" BorderThickness="1" Background="#0c70b6" HorizontalAlignment="Left" />
+                                                                    </Grid>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ProgressBar.Style>
+                                                <ProgressBar.Triggers>
+                                                    <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ThicknessAnimation Storyboard.TargetName="pb1" Storyboard.TargetProperty="Margin" From="0 0 250 0" To="0 0 0 0" Duration="0:0:0.5" />
 
 
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </EventTrigger>
-                                                    </ProgressBar.Triggers>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                </ProgressBar.Triggers>
 
-                                                </ProgressBar>
-                                            </StackPanel>
+                                            </ProgressBar>
                                         </StackPanel>
-
-                                        <!---BAR 2-->
-                                        <StackPanel Margin="4">
-                                            <Label Content="Chi" FontWeight="Bold" />
-                                            <StackPanel Width="256" HorizontalAlignment="Left" Margin="4">
-                                                <ProgressBar Minimum="0" Maximum="100" BorderBrush="Transparent" Height="12" x:Name="pb2" Value="{Binding TotalOutPc}">
-                                                    <ProgressBar.Style>
-                                                        <Style TargetType="{x:Type ProgressBar}">
-                                                            <Setter Property="Template">
-                                                                <Setter.Value>
-                                                                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                                        <Grid MinHeight="12" MinWidth="128">
-                                                                            <Border Name="PART_Track" CornerRadius="8" />
-                                                                            <Border Name="PART_Indicator" CornerRadius="8" BorderThickness="1" Background="OrangeRed" HorizontalAlignment="Left" />
-                                                                        </Grid>
-                                                                    </ControlTemplate>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </Style>
-                                                    </ProgressBar.Style>
-                                                    <ProgressBar.Triggers>
-                                                        <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <ThicknessAnimation Storyboard.TargetName="pb2" Storyboard.TargetProperty="Margin" From="0 0 250 0" To="0 0 0 0" Duration="0:0:0.5" />
-
-
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </EventTrigger>
-
-                                                    </ProgressBar.Triggers>
-                                                </ProgressBar>
-                                            </StackPanel>
-                                        </StackPanel>
-
                                     </StackPanel>
 
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock Text="{Binding TotalIn}" Margin="0,15,0,0" FontSize="20" />
-                                        <TextBlock Text="{Binding TotalOut}" Margin="0,30,0,0" FontSize="20" />
+                                    <!---BAR 2-->
+                                    <StackPanel Margin="4">
+                                        <Label Content="Chi" FontWeight="Bold" />
+                                        <StackPanel Width="256" HorizontalAlignment="Left" Margin="4">
+                                            <ProgressBar Minimum="0" Maximum="100" BorderBrush="Transparent" Height="12" x:Name="pb2" Value="{Binding TotalOutPc}">
+                                                <ProgressBar.Style>
+                                                    <Style TargetType="{x:Type ProgressBar}">
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                                                    <Grid MinHeight="12" MinWidth="128">
+                                                                        <Border Name="PART_Track" CornerRadius="8" />
+                                                                        <Border Name="PART_Indicator" CornerRadius="8" BorderThickness="1" Background="OrangeRed" HorizontalAlignment="Left" />
+                                                                    </Grid>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ProgressBar.Style>
+                                                <ProgressBar.Triggers>
+                                                    <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ThicknessAnimation Storyboard.TargetName="pb2" Storyboard.TargetProperty="Margin" From="0 0 250 0" To="0 0 0 0" Duration="0:0:0.5" />
+
+
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+
+                                                </ProgressBar.Triggers>
+                                            </ProgressBar>
+                                        </StackPanel>
                                     </StackPanel>
 
-                                </Grid>
+                                </StackPanel>
 
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding TotalIn}" Margin="0,15,0,0" FontSize="20" />
+                                    <TextBlock Text="{Binding TotalOut}" Margin="0,30,0,0" FontSize="20" />
+                                </StackPanel>
 
                             </Grid>
 
-                        </materialDesign:Card>
-                    </StackPanel>
 
-                    <StackPanel Grid.Row="2">
-                        <materialDesign:Card Margin="4" UniformCornerRadius="5">
-                            <StackPanel>
-                                <StackPanel.Resources>
-                                    <ResourceDictionary>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="FontSize" Value="14" />
-                                            <Setter Property="Margin" Value="4" />
-                                        </Style>
-                                    </ResourceDictionary>
-                                </StackPanel.Resources>
+                        </Grid>
 
-                                <StackPanel Orientation="Horizontal" Margin="0">
-                                    <TextBlock Text="Chu kỳ:" Width="128" Margin="8" />
-                                    <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" Margin="8" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <TextBlock Text="Thời gian:" Width="128" Margin="8" />
-                                    <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <TextBlock Text="Số hoá đơn:" Width="128" Margin="8" />
-                                    <TextBlock Text="{Binding TotalBill}" Margin="8" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Lợi nhuận:" Width="128" VerticalAlignment="Center" Margin="8" />
-                                    <TextBlock Text="{Binding TrueIncome}" Margin="16,0,0,0" />
-                                </StackPanel>
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </StackPanel>
-
-                </Grid>
-
-                <!--Right-->
-                <StackPanel Grid.Column="1" Orientation="Horizontal" x:Name="cardRight" Margin="8">
-                    <materialDesign:Card Background="White" Margin="8" Height="512" Width="512" UniformCornerRadius="5" VerticalAlignment="Top">
-                        <lvc:CartesianChart LegendLocation="Bottom" Series="{Binding InComeData,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                            <lvc:CartesianChart.AxisX>
-                                <lvc:AxesCollection>
-                                    <lvc:Axis MinValue="1" MaxValue="{Binding LabelMaxValue}">
-                                        <lvc:Axis.Separator>
-                                            <lvc:Separator Step="1" />
-                                        </lvc:Axis.Separator>
-                                    </lvc:Axis>
-                                </lvc:AxesCollection>
-                            </lvc:CartesianChart.AxisX>
-                            <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Triệu đồng" FontFamily="arial" MinValue="0" />
-                            </lvc:CartesianChart.AxisY>
-                        </lvc:CartesianChart>
                     </materialDesign:Card>
                 </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <materialDesign:Card Margin="4" UniformCornerRadius="5">
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <ResourceDictionary>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="Margin" Value="4" />
+                                    </Style>
+                                </ResourceDictionary>
+                            </StackPanel.Resources>
+
+                            <StackPanel Orientation="Horizontal" Margin="0">
+                                <TextBlock Text="Chu kỳ:" Width="128" Margin="8" />
+                                <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" Margin="8" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock Text="Thời gian:" Width="128" Margin="8" />
+                                <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock Text="Số hoá đơn:" Width="128" Margin="8" />
+                                <TextBlock Text="{Binding TotalBill}" Margin="8" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Center">
+                                <TextBlock Text="Lợi nhuận:" Width="128" VerticalAlignment="Center" Margin="8" />
+                                <TextBlock Text="{Binding TrueIncome}" Margin="16,0,0,0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </StackPanel>
+
             </Grid>
         </Grid>
     </Grid>

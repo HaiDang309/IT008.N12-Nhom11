@@ -182,14 +182,14 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
                     catch (System.Data.Entity.Core.EntityException e)
                     {
                         Console.WriteLine(e);
-                        MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                        mb.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                     }
 
                     if (BillDetail.TicketInfo is null)
@@ -288,8 +288,8 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
 
                                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
 
-                                MessageBoxCustom mb = new MessageBoxCustom("Thông báo", "Xuất file thành công", MessageType.Success, MessageButtons.OK);
-                                mb.ShowDialog();
+                                new MessageBoxCustom("Thông báo", "Xuất file thành công", MessageType.Success, MessageButtons.OK);
+
                             }
                         }
                         break;
@@ -336,8 +336,8 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
 
                                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
 
-                                MessageBoxCustom mb = new MessageBoxCustom("Thông báo", "Xuất file thành công", MessageType.Success, MessageButtons.OK);
-                                mb.ShowDialog();
+                                new MessageBoxCustom("Thông báo", "Xuất file thành công", MessageType.Success, MessageButtons.OK);
+
                             }
                         }
                         break;
@@ -364,15 +364,15 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
 
@@ -405,15 +405,15 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
 
@@ -431,15 +431,15 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                            mb.ShowDialog();
+                            new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
                             throw;
                         }
 
@@ -500,14 +500,14 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
             }
         }
         public async Task CheckImportMonthFilter()
@@ -520,14 +520,14 @@ namespace CinemaManagement.ViewModel.AdminVM.Import_ExportManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+
             }
 
         }

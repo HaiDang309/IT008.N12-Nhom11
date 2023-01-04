@@ -8,96 +8,61 @@ namespace CinemaManagement.Views
 {
     public partial class MessageBoxCustom : Window
     {
-        public MessageBoxCustom(string Title,string Message, MessageType Type, MessageButtons Buttons)
+        public bool DialogResult { get; set; }
+
+        public MessageBoxCustom(string Title, string Message, MessageType Type, MessageButtons Buttons)
         {
             InitializeComponent();
-            txtMessage.Text = Message;
-            if(txtMessage.Text.Length > 27)
-            txtMessage.Margin = new Thickness(15, 5, 5, 5);
-            if (txtMessage.Text.Length > 54)
-            {
-                txtMessage.Margin = new Thickness(4, 10, 5, 5);
-                txtMessage.FontSize = 16;
-                txtMessage.Width = 255;
-                txtMessage.Height = 55;
-                ImgMessage.Margin = new Thickness(0, 0, 0, 5);
-            }
-            txtTitle.Text = Title;
+            string _title = Title;
+            string _msg = Message;
+            MessageBoxButton msgBtn = MessageBoxButton.OK;
+            MessageBoxImage msgImg = MessageBoxImage.None;
             switch (Type)
             {
 
                 case MessageType.Info:
-                    System.Media.SystemSounds.Beep.Play();
-                    ChangeBackGround((Color)ColorConverter.ConvertFromString("#FF2196F3"));
-                    ImgMessage.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagement;component/Resources/Icon/info.png"));
+                    msgImg = MessageBoxImage.Information;
                     break;
                 case MessageType.Success:
-                    System.Media.SystemSounds.Beep.Play();
-                    ChangeBackGround((Color)ColorConverter.ConvertFromString("#FF4CAF50"));
-                    ImgMessage.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagement;component/Resources/Icon/succes.png"));
+                    msgImg = MessageBoxImage.None;
                     break;
                 case MessageType.Warning:
-                    System.Media.SystemSounds.Beep.Play();
-                    ChangeBackGround((Color)ColorConverter.ConvertFromString("#FFF3BA0E"));
-                    ImgMessage.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagement;component/Resources/Icon/warning.png"));
+                    msgImg = MessageBoxImage.Warning;
                     break;
                 case MessageType.Error:
-                    System.Media.SystemSounds.Hand.Play();
-                    ChangeBackGround((Color)ColorConverter.ConvertFromString("#FFED4538"));
-                    ImgMessage.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagement;component/Resources/Icon/ErrorIcon.png"));
+                    msgImg = MessageBoxImage.Error;
                     break;
             }
             switch (Buttons)
             {
                 case MessageButtons.OKCancel:
-                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
+                    msgBtn = MessageBoxButton.OKCancel;
                     break;
                 case MessageButtons.YesNo:
-                    btnOk.Visibility = Visibility.Collapsed; btnCancel.Visibility = Visibility.Collapsed;
+                    msgBtn = MessageBoxButton.YesNo;
                     break;
                 case MessageButtons.OK:
-                    btnOk.Visibility = Visibility.Visible;
-                    btnCancel.Visibility = Visibility.Collapsed;
-                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
+                    msgBtn = MessageBoxButton.OK;
                     break;
             }
-        }
-        public void ChangeBackGround(Color newcolor)
-        {
-            BackGroundTittle.Background = new SolidColorBrush(newcolor);
-            btnOk.Background = new SolidColorBrush(newcolor);
-            btnYes.Background = new SolidColorBrush(newcolor);
-            btnClose.Foreground = new SolidColorBrush(newcolor);
-        }
 
-        private void btnYes_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
-
-        private void btnOk_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-            this.Close();
-        }
-
-        private void btnNo_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
+            MessageBoxResult rs = System.Windows.MessageBox.Show(_msg, _title, msgBtn, msgImg);
+            if (rs == MessageBoxResult.Yes)
+            {
+                this.DialogResult = true;
+            }
+            else if (rs == MessageBoxResult.Cancel)
+            {
+                this.DialogResult = false;
+            }
+            else if (rs == MessageBoxResult.No)
+            {
+                this.DialogResult = false;
+            }
+            else if (rs == MessageBoxResult.OK)
+            {
+                this.DialogResult = true;
+            }
         }
     }
     public enum MessageButtons

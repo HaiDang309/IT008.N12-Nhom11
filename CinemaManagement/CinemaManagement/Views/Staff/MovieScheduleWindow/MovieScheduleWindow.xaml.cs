@@ -25,11 +25,11 @@ namespace CinemaManagement.Views.Staff.MovieScheduleWindow
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (ShowTimeSelected != null)
-                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff97c5");
+                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#fff");
 
             ShowTimeSelected = (Border)sender;
 
-            ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFF6378B");
+            ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#B5D5C5");
             if (_Room.Visibility == Visibility.Collapsed)
                 _Room.Visibility = Visibility.Visible;
         }

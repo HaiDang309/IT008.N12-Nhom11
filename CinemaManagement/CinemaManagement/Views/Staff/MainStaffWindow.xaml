@@ -22,54 +22,44 @@
     <Grid>
         <DockPanel>
 
-            <Border BorderThickness="0,0,1,0" BorderBrush="#c4c4c4">
-                <StackPanel DockPanel.Dock="Left" Margin="4,16">
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Height="40">
-                        <Image Source="/Resources/Icon/iconApp.ico" Width="40" Margin="10,-5,5,0" />
-                        <TextBlock TextWrapping="Wrap" materialDesign:TextBlockAssist.AutoToolTip="True" VerticalAlignment="Bottom" TextAlignment="Center" Text="Squadin Cinema" FontFamily="Helvetica" FontWeight="Bold" Foreground="#e3e9fa" FontSize="16" Width="70" />
+            <Border BorderThickness="0,0,1,0" BorderBrush="#c4c4c4" Background="#fff">
+                <StackPanel DockPanel.Dock="Left" Margin="4,16" Background="#fff">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Height="56" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock TextWrapping="Wrap" materialDesign:TextBlockAssist.AutoToolTip="True" VerticalAlignment="Center" TextAlignment="Center" Text="Tiny Cinema" FontFamily="Helvetica" FontWeight="Bold" FontSize="20" Width="128" />
                     </StackPanel>
                     <StackPanel Grid.Row="1" Margin="0,0,0,224">
                         <Border CornerRadius="5">
-                            <StackPanel Tag="{Binding ElementName=btnShowing}" Orientation="Horizontal" Height="60" Width="140">
-                                <materialDesign:PackIcon Kind="Movie" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
-                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" GroupName="mainOptions" Content="Phim Đang chiếu" FontWeight="Bold" x:Name="btnShowing" Width="auto" Command="{Binding LoadShowtimePageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                            <StackPanel Tag="{Binding ElementName=btnShowing}" Orientation="Horizontal" Height="32">
+                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" GroupName="mainOptions" Content="Phim Đang chiếu" FontWeight="Bold" x:Name="btnShowing" Command="{Binding LoadShowtimePageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
                             </StackPanel>
                         </Border>
                         <Border CornerRadius="5">
-                            <StackPanel Tag="{Binding ElementName=btnFood}" Orientation="Horizontal" Height="60" Width="140">
-                                <materialDesign:PackIcon Kind="Food" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
-                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" Content="Đồ Ăn" FontWeight="Bold" GroupName="mainOptions" x:Name="btnFood" Width="110" Command="{Binding LoadFoodPageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
+                            <StackPanel Tag="{Binding ElementName=btnFood}" Orientation="Horizontal" Height="32">
+                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" Content="Đồ Ăn" FontWeight="Bold" GroupName="mainOptions" x:Name="btnFood" Command="{Binding LoadFoodPageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
                             </StackPanel>
                         </Border>
-                        <Border CornerRadius="5">
-                            <StackPanel Tag="{Binding ElementName=btnError}" Orientation="Horizontal" Height="60" Width="140">
-                                <materialDesign:PackIcon Kind="WarningOctagon" Width="30" Height="32" VerticalAlignment="Center" Cursor="Hand" Foreground="Black" />
-                                <RadioButton Style="{StaticResource MenuButtonMainStaff}" Foreground="Black" Content="Báo cáo sự cố" FontWeight="Bold" GroupName="mainOptions" x:Name="btnError" Width="110" Command="{Binding LoadErrorPageCM}" CommandParameter="{Binding ElementName=mainFrame}" />
-                            </StackPanel>
-                        </Border>
+                        
                     </StackPanel>
                 </StackPanel>
             </Border>
 
-            <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#c4c4c4">
+            <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#c4c4c4" Background="#fff">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <materialDesign:PackIcon Kind="AccountCircle"
-                                                             Width="32"
-                                                             Height="32"
-                                                             Background="Transparent"
-                                                             Foreground="Black" VerticalAlignment="Center" />
-                    <TextBlock VerticalAlignment="Bottom"
-                                               x:Name="_StaffName"
-                                               Height="32"
-                                               FontSize="20"
-                                               TextWrapping="Wrap"
-                                               Foreground="Black"
-                                               Margin="0 10 0 5"
-                                               Padding="0 10 0 0" />
+                    
                     <materialDesign:PopupBox DockPanel.Dock="Right"
                                                              PlacementMode="BottomAndAlignRightEdges"
                                                              Foreground="Black">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Kind="AccountCircle" Width="32" Height="32" />
+                        </materialDesign:PopupBox.ToggleContent>
                         <StackPanel Orientation="Vertical">
+                            <TextBlock VerticalAlignment="Center"
+                                               x:Name="_StaffName"
+                                               FontSize="20"
+                                                FontWeight="Bold"
+                                               TextWrapping="Wrap"
+                                               Foreground="Black" HorizontalAlignment="Center" />
+                            
                             <Button Content="Đổi vai trò"
                                                     Command="{Binding ChangeRoleCM}"
                                                     CommandParameter="{Binding ElementName=Main_Staff}"

@@ -32,19 +32,12 @@
         </Grid.RowDefinitions>
 
         <!--cong cu va cac button-->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8" HorizontalAlignment="Center">
-            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" FontSize="25" Foreground="#DD000000" FontFamily="Arial" AllowDrop="True" BorderThickness="0,0,0,1" Width="512" Height="32" Padding="0" x:Name="FilterBox" TextChanged="TextBox_TextChanged" VerticalAlignment="Bottom">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" FontSize="20" x:Name="FilterBox" TextChanged="TextBox_TextChanged" Margin="0,0,16,0" Width="256">
             </TextBox>
-            <StackPanel Orientation="Horizontal" Margin="24,0,0,0" VerticalAlignment="Center">
-                <Button VerticalAlignment="Top" HorizontalAlignment="Center" Width="128" FontSize="25" FontFamily="arial" materialDesign:ButtonAssist.CornerRadius="8" Command="{Binding LoadAddMovieCM}">
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="PlusCircleOutline" Width="24" Height="24" VerticalAlignment="Center" Margin="0,0,0,0" />
-                            <TextBlock Text="Thêm" Margin="4,0,0,0" VerticalAlignment="Center" />
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
-            </StackPanel>
+            <Button Command="{Binding LoadAddMovieCM}">
+                Thêm
+            </Button>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="8">
@@ -93,51 +86,31 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn>
+                                <GridViewColumn Width="164">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="5" Cursor="Hand">
-                                                    <Border.Style>
-                                                        <Style TargetType="Border">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Background" Value="#00e5ff" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Border.Style>
-                                                    <StackPanel>
 
-                                                        <Image Source="/Resources/Icon/pencil.png" Width="30" Height="30"/>
-
-                                                    </StackPanel>
+                                                <Border BorderBrush="DarkOrange" BorderThickness="0.5" CornerRadius="5" Cursor="Hand">
+                                                    <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="DarkOrange" />
                                                     <i:Interaction.Triggers>
                                                         <i:EventTrigger EventName="MouseLeftButtonUp">
                                                             <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadEditMovieCM}" />
                                                         </i:EventTrigger>
                                                     </i:Interaction.Triggers>
                                                 </Border>
-                                                <Border BorderThickness="0.5" BorderBrush="Black" CornerRadius="5" Margin="10,0,0,0" Cursor="Hand">
-                                                    <Border.Style>
-                                                        <Style TargetType="Border">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Background" Value="#ff6255" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Border.Style>
-                                                    <StackPanel>
-                                                        <materialDesign:PackIcon Kind="GarbageCanEmpty" Width="30" Height="30">
-                                                        </materialDesign:PackIcon>
-                                                    </StackPanel>
+                                                <Border BorderThickness="0.5" BorderBrush="Red" CornerRadius="5" Margin="10,0,0,0" Cursor="Hand">
+                                                    <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" Foreground="Red">
+                                                    </materialDesign:PackIcon>
                                                     <i:Interaction.Triggers>
                                                         <i:EventTrigger EventName="MouseLeftButtonUp">
                                                             <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadDeleteMovieCM}" />
                                                         </i:EventTrigger>
                                                     </i:Interaction.Triggers>
                                                 </Border>
+
+
+
                                             </StackPanel>
 
                                         </DataTemplate>
@@ -155,6 +128,5 @@
             </materialDesign:Card>
         </Grid>
 
-        <Grid Grid.RowSpan="2" Background="Gray" Opacity="0.3" Visibility="Collapsed" x:Name="ShadowMask" />
     </Grid>
 </Page>

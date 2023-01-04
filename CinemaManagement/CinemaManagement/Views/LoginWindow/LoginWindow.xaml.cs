@@ -41,18 +41,18 @@ namespace CinemaManagement.Views.LoginWindow
             Button btn = sender as Button;
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
-        private void Loginwindow_Loaded(object sender, RoutedEventArgs e)
+        /* private void Loginwindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.Dispatcher.Invoke(DispatcherPriority.Normal, (Action)(() =>
             {
                 imagerotator();
             }));
-        }
+        }*/
 
 
         int i = 2;
 
-        private void imagerotator()
+        /* private void imagerotator()
 
         {
 
@@ -72,7 +72,7 @@ namespace CinemaManagement.Views.LoginWindow
 
             };
 
-            Storyboard.SetTarget(fadein, imgframe);
+            // Storyboard.SetTarget(fadein, imgframe);
 
             Storyboard.SetTargetProperty(fadein, new PropertyPath(ImageBrush.OpacityProperty));
 
@@ -84,8 +84,9 @@ namespace CinemaManagement.Views.LoginWindow
 
             sb.Begin();
 
-        }
-        private void sb_Completed0(object sender, EventArgs e)
+        } */ 
+
+        /* private void sb_Completed0(object sender, EventArgs e)
 
         {
 
@@ -105,7 +106,7 @@ namespace CinemaManagement.Views.LoginWindow
 
             };
 
-            Storyboard.SetTarget(fadein, imgframe);
+            // Storyboard.SetTarget(fadein, imgframe);
 
             Storyboard.SetTargetProperty(fadein, new PropertyPath(ImageBrush.OpacityProperty));
 
@@ -117,8 +118,9 @@ namespace CinemaManagement.Views.LoginWindow
 
             sb.Begin();
 
-        }
-        private void sb_Completed(object sender, EventArgs e)
+        } */
+
+        /* private void sb_Completed(object sender, EventArgs e)
 
         {
 
@@ -134,7 +136,7 @@ namespace CinemaManagement.Views.LoginWindow
 
             }
 
-            imgframe.Source = new BitmapImage(new Uri(strUri2));
+            // imgframe.Source = new BitmapImage(new Uri(strUri2));
 
             Storyboard myStoryboard2 = new Storyboard();
 
@@ -152,7 +154,7 @@ namespace CinemaManagement.Views.LoginWindow
 
             };
 
-            Storyboard.SetTarget(fadein, imgframe);
+            // Storyboard.SetTarget(fadein, imgframe);
 
             Storyboard.SetTargetProperty(fadein, new PropertyPath(ImageBrush.OpacityProperty));
 
@@ -164,7 +166,7 @@ namespace CinemaManagement.Views.LoginWindow
 
             imagerotator();
 
-        }
+        } */
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

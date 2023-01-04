@@ -15,7 +15,7 @@ namespace CinemaManagement.ViewModel.AdminVM.ShowtimeManagementVM
 
 
             if ((bool)value == true)
-                return new SolidColorBrush(Colors.Brown);
+                return new SolidColorBrush(Colors.Red);
             else if ((bool)value == false)
                 return new SolidColorBrush(Colors.White);
             else

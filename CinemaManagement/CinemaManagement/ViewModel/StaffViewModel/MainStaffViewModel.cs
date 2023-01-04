@@ -207,13 +207,11 @@ namespace CinemaManagement.ViewModel
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                        mess.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
                     }
                     catch (Exception e)
                     {
-                        MessageBoxCustom mess = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                        mess.ShowDialog();
+                        new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
                     }
                 }
             });

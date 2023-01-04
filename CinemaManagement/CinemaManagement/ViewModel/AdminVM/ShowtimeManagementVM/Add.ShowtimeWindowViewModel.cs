@@ -52,8 +52,8 @@ namespace CinemaManagement.ViewModel.AdminVM.ShowtimeManagementViewModel
                 if (IsSuccess)
                 {
                     IsSaving = false;
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
+
 
                     p.Close();
                     ShadowMask.Visibility = Visibility.Collapsed;
@@ -63,14 +63,14 @@ namespace CinemaManagement.ViewModel.AdminVM.ShowtimeManagementViewModel
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
+
                 }
             }
             else
             {
-                MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đầy đủ thông tin!", MessageType.Warning, MessageButtons.OK);
-                mb.ShowDialog();
+                new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đầy đủ thông tin!", MessageType.Warning, MessageButtons.OK);
+
             }
         }
         public void CalculateRunningTime()

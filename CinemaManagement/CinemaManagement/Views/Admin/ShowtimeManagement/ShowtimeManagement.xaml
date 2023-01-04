@@ -6,52 +6,24 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" mc:Ignorable="d" DataContext="{StaticResource ShowtimeManagementVM}" Height="Auto" Width="Auto" FontFamily="arial" x:Name="mainPage">
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding MaskNameCM}" CommandParameter="{Binding ElementName=ShadowMask}" />
-            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
-
-    <Page.Triggers>
-        <EventTrigger RoutedEvent="Page.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="mainPage" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3" />
-
-
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Page.Triggers>
-
     <Grid Background="#f0f2f5">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />
             <RowDefinition Height="90*" />
         </Grid.RowDefinitions>
         <!--cong cu va cac button-->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="24, 8" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" x:Name="_FilterBox" FontSize="25" Foreground="#DD000000" FontFamily="Arial" AllowDrop="True" BorderThickness="0,0,0,1" Width="256" Padding="0" VerticalAlignment="Center" TextChanged="FilterBox_TextChanged" />
-            <StackPanel Orientation="Horizontal" Margin="30,0,0,-0.333" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Height="48" FontSize="25" FontFamily="arial" materialDesign:ButtonAssist.CornerRadius="8" Command="{Binding LoadAddShowtimeCM}">
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="PlusCircleOutline" Width="25" Height="25" VerticalAlignment="Center" Margin="0,0,0,0" />
-                            <TextBlock Text="Thêm" Margin="5,0,0,0" />
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
-                <DatePicker Width="256" x:Name="Calendar" Style="{StaticResource MaterialDesignOutlinedDatePicker}" BorderBrush="#0c70b6" Margin="128,0,0,0" FontSize="25" Foreground="Black" Padding="10,0,20,0" materialDesign:ValidationAssist.Background="#f0f2f5" materialDesign:ValidationAssist.FontSize="0.01" SelectedDate="{Binding SelectedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectedDateChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedDateCM}" CommandParameter="{Binding ElementName=Calendar}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </DatePicker>
-            </StackPanel>
-
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" FontSize="20" x:Name="_FilterBox" Width="256" TextChanged="FilterBox_TextChanged" VerticalAlignment="Center"/>
+            <Button Command="{Binding LoadAddShowtimeCM}" Margin="16,0,16,0">
+                Thêm
+            </Button>
+            <DatePicker x:Name="Calendar" SelectedDate="{Binding SelectedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedDateCM}" CommandParameter="{Binding ElementName=Calendar}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DatePicker>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0">
@@ -125,7 +97,7 @@
                                                     <ListBox.ItemTemplate>
                                                         <DataTemplate>
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="{Binding StartTime}" FontSize="14" Width="128" Background="LightGoldenrodYellow" Foreground="Black">
+                                                                <Button Content="{Binding StartTime}" FontSize="14" Width="128" Background="#fff" BorderBrush="#000" Foreground="Black">
                                                                 </Button>
                                                             </StackPanel>
 
@@ -138,14 +110,16 @@
                                     <GridViewColumn>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Border BorderThickness="0.5" BorderBrush="Black" Margin="0,5,0,0" CornerRadius="5">
+                                                <Border BorderThickness="0.5" Margin="0,5,0,0" CornerRadius="5" BorderBrush="DarkOrange">
                                                     <StackPanel Cursor="Hand">
+                                                        <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="DarkOrange" />
+
                                                         <i:Interaction.Triggers>
                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
                                                                 <i:InvokeCommandAction Command="{Binding ElementName=ShowtimeListview, Path=DataContext.LoadInfor_EditShowtime}" />
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
-                                                        <Image Height="24" Width="24" Source="/Resources/Icon/pencil.png" />
+                                                        
                                                     </StackPanel>
 
 

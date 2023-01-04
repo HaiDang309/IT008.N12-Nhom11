@@ -12,19 +12,21 @@
       TextElement.FontSize="13"
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
-      Background="#f3f5f7"
+      Background="#fff"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      DataContext="{StaticResource BillTicketVM}"
       ShowsNavigationUI="False">
 
     <Grid>
 
-        <Border CornerRadius="90"
-                Height="55"
-                Width="55"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" CornerRadius="90"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="15 15 0 0"
+                Margin="8"
                 Cursor="Hand">
             <Border.Style>
                 <Style TargetType="Border">
@@ -49,503 +51,457 @@
             </i:Interaction.Triggers>
         </Border>
 
-        <materialDesign:Card HorizontalAlignment="Left"
-                             Width="450"
-                             Height="70"
-                             VerticalAlignment="Top"
-                             Margin="180 40 0 0"
-                             UniformCornerRadius="6">
-            <Label Content="THANH TOÁN HÓA ĐƠN"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="THANH TOÁN HÓA ĐƠN"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="28"
                    FontWeight="Bold"
                    FontFamily="Ubuntu" />
-        </materialDesign:Card>
 
-        <materialDesign:Card VerticalAlignment="Stretch"
-                             HorizontalAlignment="Left"
-                             Width="450"
-                             Margin="180 130 0 40"
+                <materialDesign:Card Grid.Row="1" VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
                              UniformCornerRadius="6">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="61" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
 
-                <!---HEADER-->
-                <Grid Grid.Row="0">
-                    <Label Content="  Thông tin khách hàng"
-                           FontSize="25"
+                        <!---HEADER-->
+                        <Grid Grid.Row="0">
+                            <Label Content="Thông tin khách hàng"
+                                   HorizontalAlignment="Center"
+                           FontSize="20"
                            FontWeight="Bold"
                            BorderThickness="0,0,0,0.5"
                            BorderBrush="Black"
-                           Padding="10,10,0,0"
-                           Margin="10 8 10 0" />
-                </Grid>
-                <!--#endregion-->
+                           />
+                        </Grid>
+                        <!--#endregion-->
 
-                <Grid Grid.Row="1">
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment"
+                        <Grid Grid.Row="1">
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment"
                                     Value="Center" />
-                            <Setter Property="FontSize"
+                                    <Setter Property="FontSize"
                                     Value="18" />
-                            <Setter Property="Margin"
+                                    <Setter Property="Margin"
                                     Value="10 15 15 0" />
-                            <Setter Property="HorizontalAlignment"
+                                    <Setter Property="HorizontalAlignment"
                                     Value="Right" />
 
-                        </Style>
+                                </Style>
 
-                        <Style TargetType="TextBox"
+                                <Style TargetType="TextBox"
                                BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
-                            <Setter Property="VerticalAlignment"
+                                    <Setter Property="VerticalAlignment"
                                     Value="Stretch" />
-                            <Setter Property="HorizontalAlignment"
+                                    <Setter Property="HorizontalAlignment"
                                     Value="Stretch" />
-                            <Setter Property="FontSize"
+                                    <Setter Property="FontSize"
                                     Value="18" />
-                            <Setter Property="TextAlignment"
+                                    <Setter Property="TextAlignment"
                                     Value="Left" />
 
-                            <Setter Property="Margin"
+                                    <Setter Property="Margin"
                                     Value="0 0 10 4" />
-                            <Setter Property="Padding"
+                                    <Setter Property="Padding"
                                     Value="0 0 0 0" />
-                        </Style>
-                    </Grid.Resources>
-
-                    <Grid Height="40"
-                          VerticalAlignment="Top">
-                        <CheckBox IsThreeState="False"
+                                </Style>
+                            </Grid.Resources>
+ 
+                            <Grid VerticalAlignment="Top">
+                                <CheckBox IsThreeState="False"
+                                          Margin="12"
                                   IsChecked="{Binding IsWalkinGuest}"
                                   Content="Khách vãng lai"
-                                  Margin="10 0 0 0"
-                                  FontSize="18"
+                                          FontSize="20"
                                   VerticalAlignment="Bottom"
                                   x:Name="checkBox"
                                   Command="{Binding CboxWalkinGuestCM}"
                                   CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" />
-                    </Grid>
+                            </Grid>
 
-                    <Grid Height="45"
+                            <Grid Height="45"
                           Margin="0 40 0 0"
                           VerticalAlignment="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="70" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Điện thoại:"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="70" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Điện thoại:"
                                    Margin="10 15 15 0" />
-                        <TextBox Grid.Column="1" 
+                                <TextBox Grid.Column="1" 
                                  Text="{Binding PhoneNumber, Mode=TwoWay}"/>
-                        <Button Grid.Column="2"
+                                <Button Grid.Column="2"
                                 Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                 VerticalAlignment="Bottom"
                                 Margin="15 0 10 0"
                                 Command="{Binding CheckPhoneNumberCM}"
                                 />
 
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowPhone}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowPhone}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <!--#region Không hợp lệ-->
-                    <Grid Height="45"
+                            <!--#region Không hợp lệ-->
+                            <Grid Height="45"
                           VerticalAlignment="Top"
                           Margin="0 85 0 0">
-                        <Label Content="Số điện thoại chưa đăng ký!"
+                                <Label Content="Số điện thoại chưa đăng ký!"
                                FontSize="18"
                                VerticalAlignment="Bottom"
                                HorizontalAlignment="Center"
                                Foreground="Red"
                                FontWeight="DemiBold" />
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowPhoneError}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowPhoneError}"
                                                  Value="false">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
 
-                    </Grid>
+                            </Grid>
 
 
-                    <Grid Height="43"
+                            <Grid Height="43"
                           VerticalAlignment="Top"
                           Margin="0 130 0 0">
-                        <Label FontSize="18"
+                                <Label FontSize="18"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Center">
-                            <Hyperlink Command="{Binding OpenSignUpCM}">Đăng ký tài khoản mới</Hyperlink>
+                                    <Hyperlink Command="{Binding OpenSignUpCM}">Đăng ký tài khoản mới</Hyperlink>
 
-                        </Label>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowPhoneError}"
+                                </Label>
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowPhoneError}"
                                                  Value="false">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Grid Height="45"
+                            <Grid Height="45"
                           VerticalAlignment="Top"
                           Margin="0 173 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Họ và tên:" />
-                        <TextBox Grid.Column="1" 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Họ và tên:" />
+                                <TextBox Grid.Column="1" 
                                  Margin="0 0 30 0"
                                  Text="{Binding NameSignUp, Mode=TwoWay}"/>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowSignUp}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowSignUp}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Grid Height="45"
+                            <Grid Height="45"
                           VerticalAlignment="Top"
                           Margin="0 218 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Email:" />
-                        <TextBox Grid.Column="1" 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Email:" />
+                                <TextBox Grid.Column="1" 
                                  Margin="0 0 30 0"
                                  Text="{Binding EmailSignUp, Mode=TwoWay}"/>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowSignUp}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowSignUp}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Grid Height="60"
+                            <Grid Height="60"
                           VerticalAlignment="Top"
                           Margin="0 263 0 0">
-                        <Button Content="Đăng ký"
+                                <Button Content="Đăng ký"
                                 Width="110"
                                 VerticalAlignment="Bottom"
                                 HorizontalAlignment="Right"
                                 Margin="0 0 10 10" 
                                 Command="{Binding SignUpCM}"/>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowSignUp}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowSignUp}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <!--#endregion-->
+                            <!--#endregion-->
 
-                    <!--#region Hợp lệ-->
+                            <!--#region Hợp lệ-->
 
-                    <Grid Height="45"
+                            <Grid Height="45"
                           VerticalAlignment="Top"
                           Margin="0 85 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Họ và tên:" />
-                        <TextBox Grid.Column="1"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Họ và tên:" />
+                                <TextBox Grid.Column="1"
                                  IsEnabled="False"
                                  Margin="0 0 30 0"
                                  VerticalContentAlignment="Bottom"
                                  VerticalAlignment="Center" 
                                  Text="{Binding Name}"
                                  TextAlignment="Center"/>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowInfoCustomer}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Grid Height="45"
+                            <Grid Height="45"
                           VerticalAlignment="Top"
                           Margin="0 130 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Email:" />
-                        <TextBox Grid.Column="1"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Email:" />
+                                <TextBox Grid.Column="1"
                                  IsEnabled="False"
                                  Margin="0 0 30 0"
                                  VerticalContentAlignment="Bottom"
                                  VerticalAlignment="Center" 
                                  Text="{Binding Email}"
                                  TextAlignment="Center"/>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowInfoCustomer}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Grid VerticalAlignment="Top"
-                          Margin="10 175 0 10"
-                          Height="45">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="95" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Voucher:"
-                                   Margin="10 15 5 0" />
-                        <TextBox Grid.Column="1"
-                                 Margin="10 0 15 4"
-                                 Text="{Binding VoucherID, Mode=TwoWay}" />
-                        <Button Grid.Column="2"
-                                VerticalAlignment="Bottom"
-                                Margin="10 0 10 0"
-                                Command="{Binding AddVoucherNoFoodCM}">
-                            <Button.ContentTemplate>
-                                <DataTemplate>
-                                    <materialDesign:PackIcon Kind="Plus"
-                                                             VerticalAlignment="Stretch"
-                                                             HorizontalAlignment="Stretch" />
-                                </DataTemplate>
-                            </Button.ContentTemplate>
-                        </Button>
 
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
-                                                 Value="False">
-                                        <Setter Property="Grid.Visibility"
-                                                Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
-
-                    <Grid VerticalAlignment="Stretch"
-                          Margin="10 240 10 70">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                            <Grid VerticalAlignment="Stretch">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-                            <ListBox ItemsSource="{Binding ListVoucher}"
+                                    <ListBox ItemsSource="{Binding ListVoucher}"
                                      x:Name="listBox"
-                                     SelectedItem="{Binding SelectedItem}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Width="420">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="340" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
+                                     SelectedItem="{Binding SelectedItem}" SelectionChanged="listBox_SelectionChanged">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
 
-                                            <Grid Grid.Column="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
+                                                    <Grid Grid.Column="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
 
-                                                <TextBlock Grid.Row="0"
+                                                        <TextBlock Grid.Row="0"
                                                            Text="{Binding Code}"
                                                            FontSize="18"
                                                            FontWeight="DemiBold" />
-                                                <TextBlock Grid.Row="1"
+                                                        <TextBlock Grid.Row="1"
                                                            Text="{Binding VoucherInfoStr}"
                                                            FontSize="16"
                                                            FontWeight="Light"
                                                            HorizontalAlignment="Right" />
-                                            </Grid>
+                                                    </Grid>
 
-                                            <Grid Grid.Column="1">
-                                                <Border VerticalAlignment="Center"
+                                                    <Grid Grid.Column="1">
+                                                        <Border VerticalAlignment="Center"
                                                         HorizontalAlignment="Right"
                                                         Height="25"
                                                         Width="25"
                                                         Margin="0 0 25 0"
                                                         Cursor="Hand"
                                                         CornerRadius="8">
-                                                    <Label VerticalAlignment="Center"
+                                                            <Label VerticalAlignment="Center"
                                                            HorizontalAlignment="Center"
                                                            Height="25"
                                                            Width="25"
                                                            Content="X"
                                                            VerticalContentAlignment="Center"
                                                            HorizontalContentAlignment="Center">
-                                                    </Label>
-                                                    <Border.Style>
-                                                        <Style TargetType="Border">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver"
+                                                            </Label>
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
                                                                          Value="True">
-                                                                    <Setter Property="Background"
+                                                                            <Setter Property="Background"
                                                                             Value="#ff6255" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Border.Style>
-                                                    <i:Interaction.Triggers>
-                                                        <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                            <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteVoucherCM}" />
-                                                        </i:EventTrigger>
-                                                    </i:Interaction.Triggers>
-                                                </Border>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteVoucherCM}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
 
-                                            </Grid>
+                                                    </Grid>
 
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </ScrollViewer>
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </ScrollViewer>
+                                <Grid.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowInfoCustomer}"
                                                  Value="False">
-                                        <Setter Property="Grid.Visibility"
+                                                <Setter Property="Grid.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
 
-                    <Button Width="110"
+                            <Button Width="110"
                             Height="32"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Right"
                             Margin="0 0 10 10"
                             Content="Thanh toán"
                             Command="{Binding PayMovieCM}">
-                        <Button.Style>
-                            <Style TargetType="Button"
+                                <Button.Style>
+                                    <Style TargetType="Button"
                                    BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowDoneButton}"
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowDoneButton}"
                                                  Value="False">
-                                        <Setter Property="Button.Visibility"
+                                                <Setter Property="Button.Visibility"
                                                 Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
 
-                    <!--#endregion-->
+                            <!--#endregion-->
 
-                </Grid>
+                        </Grid>
 
 
 
+                    </Grid>
+                </materialDesign:Card>
             </Grid>
-        </materialDesign:Card>
 
-        <materialDesign:Card VerticalAlignment="Top"
-                             HorizontalAlignment="Center"
-                             Height="640"
-                             Width="450"
-                             Margin="480 40 0 0"
+            <materialDesign:Card Grid.Column="1" VerticalAlignment="Top"
+                             HorizontalAlignment="Stretch" Margin="8,0,0,0"
                              UniformCornerRadius="6">
-            <Grid>
-
-                <!--#region Phim-->
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="61" />
-                        <RowDefinition Height="447" />
-                        <RowDefinition Height="150"/>
-                    </Grid.RowDefinitions>
 
-                    <!---HEADER-->
-                    <Grid Grid.Row="0">
-                        <Label Content="  Phim"
-                               FontSize="25"
+                    <!--#region Phim-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!---HEADER-->
+                        <Grid Grid.Row="0">
+                            <Label Content="Phim"
+                               FontSize="20"
                                FontWeight="Bold"
                                BorderThickness="0,0,0,0.5"
-                               BorderBrush="Black"
-                               Padding="10,10,0,0"
-                               Margin="10 8 10 0" />
-                    </Grid>
-                    <!--#endregion-->
+                                   HorizontalAlignment="Center"
+                               BorderBrush="Black" />
+                        </Grid>
+                        <!--#endregion-->
 
-                    <!---BILL DETAIL-->
-                    <Grid Grid.Row="1"
-                          Height="490"
+                        <!---BILL DETAIL-->
+                        <Grid Grid.Row="1"
                           VerticalAlignment="Top">
-                        <Border BorderBrush="Gray"
+                            <Border BorderBrush="Gray"
                                 BorderThickness="0,0,0,0"
-                                Height="432"
                                 VerticalAlignment="Top">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="39" />
-                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="48" />
+                                    </Grid.RowDefinitions>
 
 
-                                <Border Grid.Row="0"
-                                        BorderThickness="0,0,0,1"
-                                        BorderBrush="Black"
-                                        Margin="10,0,10,0">
-                                    <StackPanel>
+                                    <StackPanel Grid.Row="0" Margin="8">
                                         <StackPanel Orientation="Horizontal">
-                                            <Grid Width="420"
-                                                  Margin="0,15,0,0">
+                                            <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="15*" />
                                                     <ColumnDefinition Width="85*" />
@@ -606,23 +562,6 @@
                                                     <ColumnDefinition />
                                                 </Grid.ColumnDefinitions>
 
-                                                <Label Content="Rạp"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="Squadin Cinema"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="420"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-
                                                 <Label Content="Phòng chiếu"
                                                        Grid.Column="0"
                                                        FontSize="20" />
@@ -672,15 +611,10 @@
                                         </StackPanel>
 
                                     </StackPanel>
-                                </Border>
-                                <Border Grid.Row="1"
-                                        BorderThickness="0,0,0,1"
-                                        BorderBrush="Black"
-                                        Margin="10,0,10,0">
-                                    <StackPanel VerticalAlignment="Center"
-                                                Margin="0 2 0 0">
+                                    <StackPanel Grid.Row="1"  VerticalAlignment="Center"
+                                                Margin="8">
                                         <StackPanel Orientation="Horizontal">
-                                            <Grid Width="420">
+                                            <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
@@ -688,7 +622,7 @@
 
                                                 <Label Content="Tổng"
                                                        Grid.Column="0"
-                                                       FontSize="20" />
+                                                       FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                 <Label x:Name="_totalticket"
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Right"
@@ -697,119 +631,74 @@
                                             </Grid>
                                         </StackPanel>
                                     </StackPanel>
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                    <!--#endregion-->
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <!--#endregion-->
 
-                    <StackPanel Margin="10 -2 20 0"
+                        <StackPanel Margin="12"
                                 Grid.Row="2">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Tổng tiền"
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Tổng tiền"
                                    FontSize="20"
                                    Grid.Column="0" />
-                            <Label Content="{Binding TotalPriceMovie}"
+                                <Label Content="{Binding TotalPriceMovie}"
                                    FontSize="20"
                                    Grid.Column="1"
                                    HorizontalAlignment="Right" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Phí giao dịch"
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Phí giao dịch"
                                    FontSize="20"
                                    Grid.Column="0" />
-                            <Label Content="Miễn phí"
+                                <Label Content="Miễn phí"
                                    FontSize="20"
                                    Grid.Column="1"
                                    HorizontalAlignment="Right" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Khuyến mãi"
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Khuyến mãi"
                                    FontSize="20"
                                    Grid.Column="0" />
-                            <Label Content="{Binding DiscountStr}"
+                                <Label Content="{Binding DiscountStr}"
                                    FontSize="20"
                                    Grid.Column="1"
                                    HorizontalAlignment="Right" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Sau khuyến mãi"
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Sau khuyến mãi"
                                    FontSize="20"
                                    Grid.Column="0" />
-                            <Label Content="{Binding LastPriceStr}"
+                                <Label Content="{Binding LastPriceStr}"
                                    FontSize="20"
                                    Grid.Column="1"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Right" />
-                        </Grid>
-                    </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                    <!--#region -->
 
                 </Grid>
-                <!--#region -->
-
-            </Grid>
-        </materialDesign:Card>
-
-        <Grid
-              Background="LightGray"
-              Opacity="0.3">
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility"
-                            Value="Collapsed" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsSaving}"
-                                     Value="True">
-                            <Setter Property="Visibility"
-                                    Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
+            </materialDesign:Card>
         </Grid>
-        <materialDesign:Card Height="100"
-                             Width="100"
-                             UniformCornerRadius="5">
-            <StackPanel>
-                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                             IsIndeterminate="True"
-                             Margin="0,30,0,0"
-                             x:Name="prg" />
-                <Label HorizontalContentAlignment="Center"
-                       FontSize="15"
-                       Content="Đang xử lý..."
-                       Margin="0,10,0,0">
-                </Label>
-            </StackPanel>
-            <materialDesign:Card.Style>
-                <Style TargetType="materialDesign:Card">
-                    <Setter Property="Visibility"
-                            Value="Collapsed" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsSaving}"
-                                     Value="True">
-                            <Setter Property="Visibility"
-                                    Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </materialDesign:Card.Style>
-        </materialDesign:Card>
+
     </Grid>
 </Page>
